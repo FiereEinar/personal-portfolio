@@ -719,6 +719,9 @@ Known polish from earlier reviews, all owned here:
 - `App.tsx`: add `tabIndex={-1}` to `<main id="main">` (F9).
 - `Hero.tsx`: set the degree line's mono tracking to `0.06em` (F10).
 - `Work.tsx`: add a visually hidden `h2` "Selected work" while keeping the visible mono label as a `<p>` (F11).
+- `Work.tsx`, `Experience.tsx`, `Stack.tsx`, `Education.tsx`: give each section a real `h2` and demote entry headings to `h3`; update `e2e/work.spec.ts` and `e2e/sections.spec.ts` selectors accordingly (F11, F18).
+- `Experience.tsx`: align periods with `mid:items-baseline` like Education (F20).
+- `Stack.tsx`: hide the `·` separators from assistive tech, or render items as separate elements (F21); add a stack-item and education-period assertion to `sections.spec.ts` (F22).
 - `Work.tsx`: drop the per-article `scroll-mt-20`; the global `scroll-mt` rule stays (F12).
 - `SystemDiagram.tsx`: Escape clears both hovered and focused ids (F16).
 
