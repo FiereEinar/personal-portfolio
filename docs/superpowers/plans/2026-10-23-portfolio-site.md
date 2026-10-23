@@ -142,12 +142,12 @@ git commit -m "chore: scaffold vite react typescript tailwind app"
 ### Task 2: Profile data, nav, and hero
 
 **Files:**
-- Create: `src/data/profile.ts`, `src/components/Nav.tsx`, `src/components/Hero.tsx`
+- Create: `src/data/profile.ts`, `src/components/Nav.tsx`, `src/components/Hero.tsx`, `src/components/Reveal.tsx`
 - Modify: `src/App.tsx`, `src/index.css`
 - Test: `e2e/hero.spec.ts`
 
 **Interfaces:**
-- Produces: `profile: Profile`, `Project`, `ExperienceEntry`, `StackGroup`, `EducationEntry` types; `<Nav />`, `<Hero />`.
+- Produces: `profile: Profile`, `Project`, `ExperienceEntry`, `StackGroup`, `EducationEntry` types; `<Nav />`, `<Hero />`, `<Reveal>`. `Reveal` renders a `div[data-reveal]` that fades and rises 12px once via `IntersectionObserver`, and renders visible with no transform when `prefers-reduced-motion: reduce`.
 
 ```ts
 export type Project = {
@@ -238,7 +238,7 @@ Expected: FAIL — `data-testid="hero"` missing.
 
 `Nav.tsx`: fixed, `h-14`, monogram `NXM` linking to `#hero`, `aria-label="Primary"`, `data-scrolled` driven by a passive scroll listener at 24px. Desktop link Email; mobile links Work, Experience, Contact using `mid:` to swap.
 
-`App.tsx` adds a `Skip to content` link as the first focusable element, pointing at `#main`.
+`App.tsx` adds a `Skip to content` link as the first focusable element, pointing at `#main`. Wrap each section's content in `<Reveal>`; `Reveal` uses a single `IntersectionObserver`, unobserves after firing, and checks `window.matchMedia("(prefers-reduced-motion: reduce)")` to render visible immediately.
 
 - [ ] **Step 4: Run and confirm passes**
 
@@ -588,7 +588,7 @@ git commit -m "feat: add checkpoint rail and mobile progress line"
 
 **Files:**
 - Create: `scripts/optimize-portrait.mjs`, `public/favicon.svg`, `.env.example`, `README.md`
-- Modify: `index.html`, `src/App.tsx`
+- Modify: `index.html`, `src/App.tsx`, `vite.config.ts`, `src/index.css`
 - Test: `e2e/meta.spec.ts`
 
 **Interfaces:**
@@ -632,7 +632,11 @@ await sharp("profile-crop.jpg")
 
 Run `npm run optimize:portrait`.
 
-`index.html`: description "Full-stack developer in Bukidnon, Philippines. SIMS, LapSync, and the React, TypeScript, and Node systems behind them."; OG/Twitter tags; canonical and OG image from `%VITE_SITE_URL%`; favicon link. Copy `.env.example` to `.env` so Vite can replace the placeholder in development; production builds set the same variable.
+`index.html`: description "Full-stack developer in Bukidnon, Philippines. SIMS, LapSync, and the React, TypeScript, and Node systems behind them."; OG/Twitter tags; canonical and OG image from `%VITE_SITE_URL%`; favicon link; `<meta name="color-scheme" content="dark">`. Copy `.env.example` to `.env` so Vite can replace the placeholder in development; production builds set the same variable.
+
+`vite.config.ts`: switch to `defineConfig(({ mode }) => ({ base: loadEnv(mode, process.cwd(), "").VITE_BASE_PATH || "/", plugins: [react(), tailwindcss()] }))` and import `loadEnv` from `vite`, because `process.env` is not populated from `.env` files at config time.
+
+`src/index.css`: import Tailwind with `@import "tailwindcss" source(none);` and add explicit `@source "../index.html";` and `@source "../src/**/*.{ts,tsx}";` so the tracked docs are not scanned for class names.
 
 `public/favicon.svg`: a 32×32 near-black square with `NM` in mint Instrument Sans fallback.
 
@@ -656,7 +660,7 @@ git commit -m "feat: add portrait export, meta tags, favicon, and readme"
 
 **Files:**
 - Test: `e2e/responsive.spec.ts`, `e2e/a11y.spec.ts`
-- Modify: any component that fails these checks.
+- Modify: `playwright.config.ts`, any component that fails these checks.
 
 - [ ] **Step 1: Write the responsive tests**
 
@@ -693,7 +697,7 @@ test("skip link is first and focus is visible", async ({ page }) => {
 test("reduced motion keeps content visible", async ({ page }) => {
   await page.emulateMedia({ reducedMotion: "reduce" });
   await page.goto("/");
-  const section = page.locator("#experience");
+  const section = page.locator("[data-reveal]").first();
   await expect(section).toBeVisible();
   const style = await section.evaluate((el) => {
     const s = getComputedStyle(el);
@@ -708,7 +712,7 @@ test("reduced motion keeps content visible", async ({ page }) => {
 - [ ] **Step 3: Run the full suite and fix failures**
 
 Run: `npx playwright test`
-Expected: all specs pass. Fix overflow, focus, or motion issues in the owning component; do not weaken the assertions.
+Expected: all specs pass. Fix overflow, focus, or motion issues in the owning component; do not weaken the assertions. Set `forbidOnly: true` in `playwright.config.ts` so a committed `test.only` cannot silently reduce coverage.
 
 - [ ] **Step 4: Build and inspect the output**
 
