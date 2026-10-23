@@ -1,3 +1,4 @@
+import Contact, { Footer } from "./components/Contact";
 import Education from "./components/Education";
 import Experience from "./components/Experience";
 import Hero from "./components/Hero";
@@ -29,7 +30,11 @@ export default function App() {
         <Reveal>
           <Education />
         </Reveal>
+        <Reveal>
+          <Contact />
+        </Reveal>
       </main>
+      <Footer />
     </>
   );
 }
