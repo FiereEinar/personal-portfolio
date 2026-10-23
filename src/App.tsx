@@ -1,3 +1,4 @@
+import CheckpointRail from "./components/CheckpointRail";
 import Contact, { Footer } from "./components/Contact";
 import Education from "./components/Education";
 import Experience from "./components/Experience";
@@ -14,6 +15,7 @@ export default function App() {
         Skip to content
       </a>
       <Nav />
+      <CheckpointRail />
       <main id="main">
         <Reveal>
           <Hero />

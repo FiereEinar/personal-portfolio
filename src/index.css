@@ -24,6 +24,14 @@ article[id] {
   scroll-margin-top: 5rem;
 }
 
+/* Keep the fixed checkpoint rail in its own left gutter. */
+@media (width >= 900px) {
+  #main section,
+  footer {
+    padding-left: 10rem;
+  }
+}
+
 @layer base {
   :focus-visible {
     outline: 2px solid var(--color-accent);

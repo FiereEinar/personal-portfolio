@@ -5,7 +5,7 @@ export default function Hero() {
     <section
       id="hero"
       data-testid="hero"
-      className="mid:grid mid:min-h-svh mid:grid-cols-[56%_44%]"
+      className="scroll-mt-20 mid:grid mid:min-h-svh mid:grid-cols-[56%_44%]"
     >
       <div className="relative h-[58svh] mid:order-2 mid:h-auto">
         <img
@@ -21,7 +21,7 @@ export default function Hero() {
         />
       </div>
 
-      <div className="flex flex-col justify-center px-6 py-14 mid:order-1 mid:py-0 mid:pr-16 mid:pl-24">
+      <div className="flex flex-col justify-center px-6 py-14 mid:order-1 mid:py-0 mid:pr-16 mid:pl-0">
         <h1 className="max-w-[12ch] text-[clamp(2.75rem,6vw,5rem)] leading-[1.02] tracking-[-0.03em] text-ink">
           {profile.name}
         </h1>
