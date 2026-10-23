@@ -6,6 +6,9 @@ test("rail tracks the active section and navigates", async ({ page }) => {
   const rail = page.getByTestId("checkpoint-rail");
   await expect(rail).toBeVisible();
   await expect(rail.getByRole("link")).toHaveCount(5);
+  const initialFill = await page.getByTestId("rail-fill").evaluate((el) => {
+    return new DOMMatrix(getComputedStyle(el).transform).d;
+  });
 
   await page.locator("#lapsync").scrollIntoViewIfNeeded();
   await expect(rail.getByRole("link", { name: /LAPSYNC/ })).toHaveAttribute("aria-current", "true");
@@ -20,7 +23,7 @@ test("rail tracks the active section and navigates", async ({ page }) => {
   const fillScale = await page.getByTestId("rail-fill").evaluate((el) => {
     return new DOMMatrix(getComputedStyle(el).transform).d;
   });
-  expect(fillScale).toBeGreaterThan(0);
+  expect(fillScale).toBeGreaterThan(initialFill + 0.1);
 
   await rail.getByRole("link", { name: /CONTACT/ }).click();
   await expect(page).toHaveURL(/#contact$/);

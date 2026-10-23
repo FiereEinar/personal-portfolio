@@ -7,7 +7,7 @@ export default defineConfig({
   webServer: {
     command: "npm run dev -- --port 5173",
     url: "http://localhost:5173",
-    reuseExistingServer: true,
+    reuseExistingServer: false,
     env: {
       VITE_SITE_URL: "https://portfolio.example",
       VITE_BASE_PATH: "/",

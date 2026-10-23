@@ -43,6 +43,7 @@ export default function Hero() {
             <span aria-hidden="true" className="ml-1 font-mono text-xs">
               ↗
             </span>
+            <span className="sr-only"> (opens in a new tab)</span>
           </a>
           <a
             href={`mailto:${profile.email}`}
