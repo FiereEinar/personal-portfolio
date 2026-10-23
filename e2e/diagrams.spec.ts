@@ -23,6 +23,8 @@ test("connectors rest solid after the draw-in", async ({ page }) => {
       connector.evaluate((el) => parseFloat(getComputedStyle(el).strokeDashoffset)),
     )
     .toBe(0);
+  const vectorEffect = await connector.evaluate((el) => getComputedStyle(el).vectorEffect);
+  expect(vectorEffect).toBe("none");
 });
 
 test("nodes are reachable by keyboard", async ({ page }) => {

@@ -37,8 +37,9 @@ The dev server runs at <http://localhost:5173>.
 | `VITE_BASE_PATH` | `/` | Public base path. `/` for a root deploy; `/repo/` for a GitHub Pages project site. |
 
 The values above are examples copied from `.env.example`, not built-in defaults. Vite
-only replaces the `%VITE_SITE_URL%` and `%VITE_BASE_PATH%` tokens when the variables
-are set; an unset variable leaves the literal `%VITE_...%` token in the built HTML.
+always replaces `%BASE_URL%` (it resolves to `/` unless `VITE_BASE_PATH` is set) and
+replaces `%VITE_SITE_URL%` only when it is set; an unset `VITE_SITE_URL` leaves the
+literal token in the built HTML.
 Set both in the host's environment (or in `.env` before building). `VITE_SITE_URL`
 has no production value committed because the domain is not known yet; set it to the
 real origin, for example `https://example.com`. The localhost example is for local

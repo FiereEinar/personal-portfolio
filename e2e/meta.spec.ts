@@ -9,6 +9,7 @@ test("meta tags and portrait are correct", async ({ page }) => {
   const ogImage = await page.locator('meta[property="og:image"]').getAttribute("content");
   expect(ogImage).toMatch(/^https?:\/\/.+profile\.jpg$/);
   expect(ogImage).not.toContain("%VITE_");
+  expect(ogImage).not.toContain("%BASE_URL%");
   expect(ogImage).not.toContain("localhost");
   await expect(page.locator('meta[property="og:image:height"]')).toHaveAttribute("content", "1200");
   await expect(page.locator('link[rel="icon"][type="image/svg+xml"]')).toHaveAttribute("href", /favicon\.svg$/);

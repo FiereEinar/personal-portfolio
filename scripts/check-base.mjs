@@ -4,7 +4,7 @@ import { join } from "node:path";
 
 const outDir = ".base-check";
 const viteBin = join(process.cwd(), "node_modules", "vite", "bin", "vite.js");
-const portraitReference = /(["'])\/profile\.jpg\1/;
+const portraitReference = /(["'`])\/profile\.jpg\1/;
 
 try {
   const build = spawnSync(
@@ -30,6 +30,13 @@ try {
     if (portraitReference.test(source)) {
       throw new Error(`root-absolute portrait reference found in ${script}`);
     }
+  }
+
+  const bundled = (
+    await Promise.all(scripts.map((script) => readFile(join(assetsDir, script), "utf8")))
+  ).join("\n");
+  if (!bundled.includes("/repo/profile.jpg")) {
+    throw new Error("expected /repo/profile.jpg in the bundle; the base path was not applied");
   }
 
   console.log(
