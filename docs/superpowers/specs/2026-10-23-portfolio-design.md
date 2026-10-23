@@ -63,9 +63,10 @@ Full-bleed portrait on the right, information on the left, dark ground. Picked f
 | `--ink` | `#F1EFE9` | headings and body |
 | `--muted` | `#A9B0AA` | secondary text, metadata |
 | `--line` | `#2A2E2B` | hairlines |
+| `--connector` | `#5C665F` | idle diagram connectors |
 | `--accent` | `#9FD8B4` | links, focus ring, active rail and diagram states |
 
-Two neutrals plus one accent. The accent appears on links, focus, the rail's active state, and the diagram paths. Nowhere else. No second accent.
+Three neutrals plus one accent. The accent appears on links, focus, the rail's active state, and the diagram paths. Nowhere else. No second accent. `--connector` is a neutral step used only for diagram lines, never text or borders.
 
 **Type**
 
