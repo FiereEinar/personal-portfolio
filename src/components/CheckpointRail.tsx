@@ -2,7 +2,6 @@ import { useEffect, useRef, useState } from "react";
 import { SECTIONS } from "../data/sections";
 
 const ACTIVE_LINE = 0.4;
-const POLL_MS = 16;
 
 type Reading = {
   activeId: string;
@@ -65,26 +64,12 @@ export default function CheckpointRail() {
 
     update();
 
-    // Scroll events ride on the rendering loop, which stalls in headless and
-    // backgrounded contexts, so also compare the offsets on a timer.
-    let lastY = window.scrollY;
-    let lastHeight = document.documentElement.scrollHeight;
-    const poll = window.setInterval(() => {
-      const y = window.scrollY;
-      const height = document.documentElement.scrollHeight;
-      if (y === lastY && height === lastHeight) return;
-      lastY = y;
-      lastHeight = height;
-      update();
-    }, POLL_MS);
-
     window.addEventListener("scroll", onScroll, { passive: true });
     window.addEventListener("resize", onScroll);
 
     return () => {
       window.removeEventListener("scroll", onScroll);
       window.removeEventListener("resize", onScroll);
-      window.clearInterval(poll);
       if (frame !== null) {
         window.cancelAnimationFrame(frame);
         frame = null;

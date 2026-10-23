@@ -24,6 +24,13 @@ test("mobile swaps the rail for a progress line", async ({ page }) => {
   await expect(page.getByTestId("checkpoint-rail")).toBeHidden();
   await expect(page.getByTestId("mobile-progress")).toBeVisible();
   await page.evaluate(() => window.scrollTo(0, document.body.scrollHeight));
+  // R5: let the scroll event and the rAF-throttled handler run before reading.
+  await page.evaluate(
+    () =>
+      new Promise<void>((resolve) => {
+        requestAnimationFrame(() => requestAnimationFrame(() => resolve()));
+      }),
+  );
   const scale = await page.getByTestId("mobile-progress").evaluate((el) => {
     const fill = el.firstElementChild as HTMLElement;
     return new DOMMatrix(getComputedStyle(fill).transform).a;
