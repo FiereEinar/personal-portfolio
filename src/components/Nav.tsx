@@ -15,7 +15,7 @@ export default function Nav() {
     <nav
       aria-label="Primary"
       data-scrolled={scrolled ? "true" : "false"}
-      className="fixed inset-x-0 top-0 z-50 h-14 border-b border-transparent bg-transparent transition-colors duration-[120ms] data-[scrolled=true]:border-line data-[scrolled=true]:bg-bg"
+      className="fixed inset-x-0 top-0 z-50 h-14 border-b border-transparent bg-bg transition-colors duration-[120ms] data-[scrolled=true]:border-line"
     >
       <div className="flex h-full items-center justify-between px-6 mid:px-10">
         <a
