@@ -1,8 +1,10 @@
 import { profile, type Project } from "../data/profile";
+import SystemDiagram from "./SystemDiagram";
 
 function ProjectEntry({ project }: { project: Project }) {
   const reversed = project.id === "lapsync";
-  const hasVisual = Boolean(project.diagram);
+  const diagram = project.diagram;
+  const hasVisual = Boolean(diagram);
 
   return (
     <article
@@ -62,13 +64,15 @@ function ProjectEntry({ project }: { project: Project }) {
         ) : null}
       </div>
 
-      {hasVisual ? (
+      {diagram ? (
         <div
           data-testid={`visual-${project.id}`}
           className={`mt-10 min-h-[16rem] border-t border-line pt-8 mid:mt-0 mid:min-h-[20rem] mid:border-t-0 mid:pt-0 ${
             reversed ? "mid:order-1" : ""
           }`}
-        />
+        >
+          <SystemDiagram id={diagram} />
+        </div>
       ) : null}
     </article>
   );
