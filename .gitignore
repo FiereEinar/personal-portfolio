@@ -1,0 +1,12 @@
+node_modules
+dist
+.superpowers
+.worktrees
+playwright-report
+test-results
+.env
+.env.local
+Melloria Resume.pdf
+resume.txt
+profile.jpg
+profile-crop.jpg
