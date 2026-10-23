@@ -718,12 +718,18 @@ Known polish from earlier reviews, all owned here:
 - `Hero.tsx`: make the portrait image `absolute inset-0 h-full w-full` inside its relative wrapper so the hero obeys `100svh` on short desktops (F6).
 - `App.tsx`: add `tabIndex={-1}` to `<main id="main">` (F9).
 - `Hero.tsx`: set the degree line's mono tracking to `0.06em` (F10).
-- `Work.tsx`: add a visually hidden `h2` "Selected work" while keeping the visible mono label as a `<p>` (F11).
-- `Work.tsx`, `Experience.tsx`, `Stack.tsx`, `Education.tsx`: give each section a real `h2` and demote entry headings to `h3`; update `e2e/work.spec.ts` and `e2e/sections.spec.ts` selectors accordingly (F11, F18).
+- `Work.tsx`, `Experience.tsx`, `Stack.tsx`, `Education.tsx`: make each visible section label the section's `h2` (keep its mono styling; do not add a hidden duplicate) and demote entry headings to `h3`; update `e2e/work.spec.ts` from `article h2` to `article h3` and keep `sections.spec.ts` passing (F11, F18).
 - `Experience.tsx`: align periods with `mid:items-baseline` like Education (F20).
 - `Stack.tsx`: hide the `·` separators from assistive tech, or render items as separate elements (F21); add a stack-item and education-period assertion to `sections.spec.ts` (F22).
 - `Work.tsx`: drop the per-article `scroll-mt-20`; the global `scroll-mt` rule stays (F12).
 - `SystemDiagram.tsx`: Escape clears both hovered and focused ids (F16).
+- `Contact.tsx`: add a screen-reader "opens in a new tab" hint to the GitHub link and assert `target`/`rel` in `contact.spec.ts` (F23, F24).
+- `src/index.css`: set the reduced-motion `animation-duration` and `transition-duration` to `0s`, so computed styles are `0s` and the a11y test is exact (F38).
+- `e2e/meta.spec.ts`: assert `color-scheme=dark`, `og:image:height=1200`, and that `og:image` is an absolute URL with no `%VITE_` token or `localhost` (F36).
+- `e2e/rail.spec.ts`: assert the `rail-fill` scale grows after scrolling and a rail link shows a visible focus outline (F30).
+- `src/data/sections.ts`: make `SECTIONS` readonly (`as const`) so order cannot drift (F31).
+- `README.md`: reword the env "Default" column; an unset variable leaves the literal `%VITE_...%` token in the build (F33).
+- `public/favicon.svg`: replace the `<text>` glyph with deterministic outlined paths and add a 32×32 PNG fallback link in `index.html` (F34).
 
 - [ ] **Step 4: Build and inspect the output**
 
