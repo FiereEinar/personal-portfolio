@@ -1,6 +1,7 @@
 import Hero from "./components/Hero";
 import Nav from "./components/Nav";
 import Reveal from "./components/Reveal";
+import Work from "./components/Work";
 
 export default function App() {
   return (
@@ -12,6 +13,9 @@ export default function App() {
       <main id="main">
         <Reveal>
           <Hero />
+        </Reveal>
+        <Reveal>
+          <Work />
         </Reveal>
       </main>
     </>
