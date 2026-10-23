@@ -123,7 +123,7 @@ The SIMS and LapSync diagrams respond to hover and keyboard focus.
 
 Single page, four anchors: Work, Experience, Contact. A monogram link returns to top.
 
-**Nav.** Fixed, transparent, gaining a hairline and an opaque `--bg` background after 24px of scroll. On desktop it holds the monogram and an Email link; the checkpoint rail handles section navigation. Below 900px, where the rail loses its labels, the nav swaps the Email link for Work, Experience, and Contact so section links are always reachable. No hamburger.
+**Nav.** Fixed, opaque `--bg` at every scroll position, gaining a hairline after 24px of scroll. On desktop it holds the monogram and an Email link; the checkpoint rail handles section navigation. Below 900px, where the rail loses its labels, the nav swaps the Email link for Work, Experience, and Contact so section links are always reachable. No hamburger.
 
 ### Checkpoint rail (fixed chrome)
 

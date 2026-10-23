@@ -714,6 +714,11 @@ test("reduced motion keeps content visible", async ({ page }) => {
 Run: `npx playwright test`
 Expected: all specs pass. Fix overflow, focus, or motion issues in the owning component; do not weaken the assertions. Set `forbidOnly: true` in `playwright.config.ts` so a committed `test.only` cannot silently reduce coverage.
 
+Known polish from earlier reviews, all owned here:
+- `Hero.tsx`: make the portrait image `absolute inset-0 h-full w-full` inside its relative wrapper so the hero obeys `100svh` on short desktops (F6).
+- `App.tsx`: add `tabIndex={-1}` to `<main id="main">` (F9).
+- `Hero.tsx`: set the degree line's mono tracking to `0.06em` (F10).
+
 - [ ] **Step 4: Build and inspect the output**
 
 Run: `npm run build`
