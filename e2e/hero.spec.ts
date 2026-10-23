@@ -13,7 +13,7 @@ test("hero shows identity, links, and portrait", async ({ page }) => {
 
 test("no phone number is published", async ({ page }) => {
   await page.goto("/");
-  await expect(page.locator("body")).not.toContainText("[redacted]");
+  await expect(page.locator("body")).not.toContainText(/(?:\+63|0)9\d{9}/);
   await expect(page.locator('a[href^="tel:"]')).toHaveCount(0);
 });
 

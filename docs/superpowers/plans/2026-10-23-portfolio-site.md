@@ -202,7 +202,7 @@ test("hero shows identity, links, and portrait", async ({ page }) => {
 
 test("no phone number is published", async ({ page }) => {
   await page.goto("/");
-  await expect(page.locator("body")).not.toContainText("[redacted]");
+  await expect(page.locator("body")).not.toContainText(/(?:\+63|0)9\d{9}/);
   await expect(page.locator('a[href^="tel:"]')).toHaveCount(0);
 });
 
@@ -730,7 +730,7 @@ Known polish from earlier reviews, all owned here:
 Run: `npm run build`
 Expected: `dist/` created with no errors.
 
-Run: `Get-ChildItem dist -Recurse -File | Select-String -Pattern "[redacted]"`
+Run: `Get-ChildItem dist -Recurse -File | Select-String -Pattern '(?:\+63|0)9\d{9}'`
 Expected: no matches.
 
 Run: `Get-ChildItem dist -Recurse -Filter *.pdf`
