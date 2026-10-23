@@ -14,7 +14,7 @@ function read(): Reading {
     scrollable > 0 ? Math.min(1, Math.max(0, window.scrollY / scrollable)) : 0;
 
   const line = window.innerHeight * ACTIVE_LINE;
-  let activeId = SECTIONS[0].id;
+  let activeId: string = SECTIONS[0].id;
 
   for (const section of SECTIONS) {
     const element = document.getElementById(section.id);
@@ -33,7 +33,7 @@ function read(): Reading {
 }
 
 export default function CheckpointRail() {
-  const [activeId, setActiveId] = useState(SECTIONS[0].id);
+  const [activeId, setActiveId] = useState<string>(SECTIONS[0].id);
   const [progress, setProgress] = useState(0);
   const current = useRef<Reading>({ activeId: SECTIONS[0].id, progress: 0 });
 

@@ -16,7 +16,7 @@ export default function App() {
       </a>
       <Nav />
       <CheckpointRail />
-      <main id="main">
+      <main id="main" tabIndex={-1}>
         <Reveal>
           <Hero />
         </Reveal>

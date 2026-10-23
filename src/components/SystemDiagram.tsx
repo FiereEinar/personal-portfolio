@@ -58,7 +58,10 @@ export default function SystemDiagram({ id }: SystemDiagramProps) {
       data-testid={`diagram-${id}`}
       className="py-2"
       onKeyDown={(event) => {
-        if (event.key === "Escape") setFocusedId(null);
+        if (event.key === "Escape") {
+          setFocusedId(null);
+          setHoveredId(null);
+        }
       }}
     >
       <div

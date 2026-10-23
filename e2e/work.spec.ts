@@ -2,7 +2,7 @@ import { test, expect } from "@playwright/test";
 
 test("three case studies render in order", async ({ page }) => {
   await page.goto("/");
-  const headings = page.locator("#work article h2");
+  const headings = page.locator("#work article h3");
   await expect(headings).toHaveText(["SIMS", "LapSync", "COT-SBO System"]);
 });
 

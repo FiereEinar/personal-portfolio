@@ -8,12 +8,12 @@ export default function Stack() {
       className="scroll-mt-20 px-6 py-16 mid:px-10 mid:py-20"
     >
       <div className="mx-auto max-w-6xl">
-        <p
+        <h2
           id="stack-label"
           className="font-mono text-[0.8125rem] tracking-[0.18em] text-muted uppercase"
         >
           Stack
-        </p>
+        </h2>
 
         <dl className="mt-10 grid gap-x-12 gap-y-8 mid:grid-cols-2">
           {profile.stack.map((group) => (
@@ -22,7 +22,17 @@ export default function Stack() {
                 {group.label}
               </dt>
               <dd className="mt-3 max-w-[46ch] text-base leading-[1.7] text-muted">
-                {group.items.join(" · ")}
+                {group.items.map((item, index) => (
+                  <span key={item}>
+                    {index > 0 ? (
+                      <>
+                        {" "}
+                        <span aria-hidden="true">·</span>{" "}
+                      </>
+                    ) : null}
+                    {item}
+                  </span>
+                ))}
               </dd>
             </div>
           ))}

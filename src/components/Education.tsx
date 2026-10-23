@@ -8,12 +8,12 @@ export default function Education() {
       className="scroll-mt-20 px-6 py-16 mid:px-10 mid:py-20"
     >
       <div className="mx-auto max-w-6xl">
-        <p
+        <h2
           id="education-label"
           className="font-mono text-[0.8125rem] tracking-[0.18em] text-muted uppercase"
         >
           Education
-        </p>
+        </h2>
 
         <div className="mt-10">
           {profile.education.map((entry) => (
@@ -22,9 +22,9 @@ export default function Education() {
               className="border-t border-line py-8 first:border-t-0 mid:grid mid:grid-cols-[1fr_13rem] mid:items-baseline mid:gap-12"
             >
               <div>
-                <h2 className="text-[clamp(1.125rem,1.6vw,1.375rem)] leading-[1.3] tracking-[-0.01em] text-ink">
+                <h3 className="text-[clamp(1.125rem,1.6vw,1.375rem)] leading-[1.3] tracking-[-0.01em] text-ink">
                   {entry.school}
-                </h2>
+                </h3>
                 <p className="mt-1 text-base leading-[1.65] text-muted">{entry.program}</p>
               </div>
 

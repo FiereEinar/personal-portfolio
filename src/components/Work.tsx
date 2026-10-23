@@ -9,7 +9,7 @@ function ProjectEntry({ project }: { project: Project }) {
   return (
     <article
       id={project.id}
-      className={`scroll-mt-20 border-t border-line first:border-t-0 ${
+      className={`border-t border-line first:border-t-0 ${
         hasVisual
           ? "py-12 mid:grid mid:grid-cols-2 mid:items-start mid:gap-14 mid:py-16"
           : "py-12 mid:py-14"
@@ -20,9 +20,9 @@ function ProjectEntry({ project }: { project: Project }) {
           {project.index}
         </p>
 
-        <h2 className="mt-3 text-[clamp(1.625rem,2.6vw,2.25rem)] leading-[1.15] tracking-[-0.02em] text-ink">
+        <h3 className="mt-3 text-[clamp(1.625rem,2.6vw,2.25rem)] leading-[1.15] tracking-[-0.02em] text-ink">
           {project.name}
-        </h2>
+        </h3>
 
         <p className="mt-4 max-w-[52ch] text-base leading-[1.65] text-ink">
           {project.summary}
@@ -86,12 +86,12 @@ export default function Work() {
       className="px-6 py-20 mid:px-10 mid:py-28"
     >
       <div className="mx-auto max-w-6xl">
-        <p
+        <h2
           id="work-label"
           className="font-mono text-[0.8125rem] tracking-[0.18em] text-muted uppercase"
         >
           Selected work
-        </p>
+        </h2>
 
         <div className="mt-10">
           {profile.projects.map((project) => (

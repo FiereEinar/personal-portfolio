@@ -14,5 +14,7 @@ test("stack groups and education render", async ({ page }) => {
   for (const label of ["Languages", "Frameworks & Libraries", "Databases", "Tools"]) {
     await expect(page.locator("#stack").getByText(label, { exact: true })).toBeVisible();
   }
+  await expect(page.locator("#stack").getByText("TypeScript", { exact: true })).toBeVisible();
   await expect(page.locator("#education").getByText("The Odin Project")).toBeVisible();
+  await expect(page.locator("#education").getByText("Apr 2023 – Sep 2024")).toBeVisible();
 });

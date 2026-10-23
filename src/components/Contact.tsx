@@ -38,6 +38,7 @@ export default function Contact() {
             <span aria-hidden="true" className="ml-1 font-mono text-xs">
               ↗
             </span>
+            <span className="sr-only"> (opens in a new tab)</span>
           </a>
         </div>
       </div>

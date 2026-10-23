@@ -5,8 +5,11 @@ test("contact exposes email and github only", async ({ page }) => {
   const section = page.locator("#contact");
   await expect(section.getByRole("link", { name: "nickxylanmelloria@gmail.com" }))
     .toHaveAttribute("href", "mailto:nickxylanmelloria@gmail.com");
-  await expect(section.getByRole("link", { name: "github.com/FiereEinar" }))
-    .toHaveAttribute("href", "https://github.com/FiereEinar");
+  const github = section.getByRole("link", { name: /github\.com\/FiereEinar/ });
+  await expect(github).toHaveAttribute("href", "https://github.com/FiereEinar");
+  await expect(github).toHaveAttribute("target", "_blank");
+  await expect(github).toHaveAttribute("rel", "noopener noreferrer");
+  await expect(github).toHaveAccessibleName(/opens in a new tab/);
   await expect(section.locator('a[href$=".pdf"]')).toHaveCount(0);
 });
 

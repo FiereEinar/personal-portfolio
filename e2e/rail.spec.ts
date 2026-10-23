@@ -10,12 +10,42 @@ test("rail tracks the active section and navigates", async ({ page }) => {
   await page.locator("#lapsync").scrollIntoViewIfNeeded();
   await expect(rail.getByRole("link", { name: /LAPSYNC/ })).toHaveAttribute("aria-current", "true");
 
+  await page.evaluate(() => window.scrollTo(0, document.documentElement.scrollHeight / 2));
+  await page.evaluate(
+    () =>
+      new Promise<void>((resolve) => {
+        requestAnimationFrame(() => requestAnimationFrame(() => resolve()));
+      }),
+  );
+  const fillScale = await page.getByTestId("rail-fill").evaluate((el) => {
+    return new DOMMatrix(getComputedStyle(el).transform).d;
+  });
+  expect(fillScale).toBeGreaterThan(0);
+
   await rail.getByRole("link", { name: /CONTACT/ }).click();
   await expect(page).toHaveURL(/#contact$/);
   const heading = page.locator("#contact h2");
   await expect(heading).toBeInViewport();
   const box = await heading.boundingBox();
   expect(box!.y).toBeGreaterThanOrEqual(56);
+});
+
+test("rail links show a keyboard focus outline", async ({ page }) => {
+  await page.setViewportSize({ width: 1440, height: 900 });
+  await page.goto("/");
+  for (let i = 0; i < 10; i += 1) {
+    await page.keyboard.press("Tab");
+    const inRail = await page.evaluate(() =>
+      Boolean(document.activeElement?.closest('[data-testid="checkpoint-rail"]')),
+    );
+    if (inRail) break;
+  }
+  const focusedRailLink = page.locator('[data-testid="checkpoint-rail"] a:focus');
+  await expect(focusedRailLink).toHaveCount(1);
+  const outline = await focusedRailLink.evaluate(
+    (el) => getComputedStyle(el).outlineStyle,
+  );
+  expect(outline).not.toBe("none");
 });
 
 test("mobile swaps the rail for a progress line", async ({ page }) => {

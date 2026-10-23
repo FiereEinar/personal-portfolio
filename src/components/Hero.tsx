@@ -7,13 +7,13 @@ export default function Hero() {
       data-testid="hero"
       className="scroll-mt-20 mid:grid mid:min-h-svh mid:grid-cols-[56%_44%]"
     >
-      <div className="relative h-[58svh] mid:order-2 mid:h-auto">
+      <div className="relative h-[58svh] mid:order-2 mid:h-full mid:min-h-svh">
         <img
           src="/profile.jpg"
           width={900}
           height={1200}
           alt="Nick Xylan Melloria"
-          className="h-full w-full object-cover object-[50%_28%] saturate-[.82] contrast-[1.03]"
+          className="absolute inset-0 h-full w-full object-cover object-[50%_28%] saturate-[.82] contrast-[1.03]"
         />
         <div
           aria-hidden="true"
@@ -28,7 +28,7 @@ export default function Hero() {
 
         <p className="mt-6 max-w-[46ch] text-base leading-[1.65] text-muted">{profile.role}</p>
 
-        <p className="mt-4 font-mono text-[0.8125rem] tracking-[0.04em] text-muted">
+        <p className="mt-4 font-mono text-[0.8125rem] tracking-[0.06em] text-muted">
           {profile.degree}
         </p>
 

@@ -31,15 +31,18 @@ The dev server runs at <http://localhost:5173>.
 
 ## Configuration
 
-| Variable | Default | Purpose |
+| Variable | Example in `.env.example` | Purpose |
 | --- | --- | --- |
 | `VITE_SITE_URL` | `http://localhost:5173` | Deployed origin used for the canonical link, `og:url`, and the absolute `og:image` / `twitter:image` URLs. **Required for correct share cards.** Use the real origin with no trailing slash. |
 | `VITE_BASE_PATH` | `/` | Public base path. `/` for a root deploy; `/repo/` for a GitHub Pages project site. |
 
-`VITE_SITE_URL` has no production value committed because the domain is not known
-yet. Set it in the host's environment (or in `.env` before building) to the real
-origin, for example `https://example.com`. If it is left as the localhost default,
-share cards point at localhost.
+The values above are examples copied from `.env.example`, not built-in defaults. Vite
+only replaces the `%VITE_SITE_URL%` and `%VITE_BASE_PATH%` tokens when the variables
+are set; an unset variable leaves the literal `%VITE_...%` token in the built HTML.
+Set both in the host's environment (or in `.env` before building). `VITE_SITE_URL`
+has no production value committed because the domain is not known yet; set it to the
+real origin, for example `https://example.com`. The localhost example is for local
+development only and points share cards at localhost.
 
 ## Deploy
 
