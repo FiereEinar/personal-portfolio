@@ -60,6 +60,7 @@ function ProjectEntry({ project }: { project: Project }) {
             <span aria-hidden="true" className="font-mono text-xs">
               ↗
             </span>
+            <span className="sr-only"> (opens in a new tab)</span>
           </a>
         ) : null}
       </div>

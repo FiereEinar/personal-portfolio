@@ -8,6 +8,7 @@
     "build": "tsc --noEmit && vite build",
     "preview": "vite preview",
     "test:e2e": "playwright test",
+    "check:base": "node scripts/check-base.mjs",
     "optimize:portrait": "node scripts/optimize-portrait.mjs"
   },
   "dependencies": {

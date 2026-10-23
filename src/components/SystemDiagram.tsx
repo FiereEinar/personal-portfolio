@@ -87,9 +87,8 @@ export default function SystemDiagram({ id }: SystemDiagramProps) {
                 className={`diagram-path ${isActive ? "text-accent" : "text-connector"}`}
                 fill="none"
                 stroke="currentColor"
-                strokeWidth={1.25}
+                strokeWidth={0.3}
                 strokeLinecap="round"
-                vectorEffect="non-scaling-stroke"
               />
             );
           })}

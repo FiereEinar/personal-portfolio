@@ -101,6 +101,7 @@ export default function CheckpointRail() {
             <a
               key={section.id}
               href={`#${section.id}`}
+              aria-label={`${section.index} ${section.label}`}
               aria-current={active ? "true" : undefined}
               className="absolute left-[-5px] flex h-11 -translate-y-1/2 items-center pr-4"
               style={{ top: `${(index / (SECTIONS.length - 1)) * 100}%` }}

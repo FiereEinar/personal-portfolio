@@ -9,10 +9,11 @@ export default function Hero() {
     >
       <div className="relative h-[58svh] mid:order-2 mid:h-full mid:min-h-svh">
         <img
-          src="/profile.jpg"
+          src={`${import.meta.env.BASE_URL}profile.jpg`}
           width={900}
           height={1200}
           alt="Nick Xylan Melloria"
+          fetchPriority="high"
           className="absolute inset-0 h-full w-full object-cover object-[50%_28%] saturate-[.82] contrast-[1.03]"
         />
         <div

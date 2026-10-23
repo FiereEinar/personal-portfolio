@@ -12,6 +12,19 @@ test("focusing a node updates the caption and path", async ({ page }) => {
   await expect(caption).toContainText("Hover or tab a component");
 });
 
+test("connectors rest solid after the draw-in", async ({ page }) => {
+  await page.goto("/");
+  const diagram = page.getByTestId("diagram-lapsync");
+  await diagram.scrollIntoViewIfNeeded();
+  await expect(diagram.locator('[data-drawn="true"]')).toHaveCount(1);
+  const connector = diagram.locator("[data-edge]").first();
+  await expect
+    .poll(() =>
+      connector.evaluate((el) => parseFloat(getComputedStyle(el).strokeDashoffset)),
+    )
+    .toBe(0);
+});
+
 test("nodes are reachable by keyboard", async ({ page }) => {
   await page.goto("/");
   const first = page.getByTestId("diagram-sims").getByRole("button").first();
