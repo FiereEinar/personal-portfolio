@@ -1,0 +1,19 @@
+@import "tailwindcss";
+@import "@fontsource-variable/instrument-sans";
+@import "@fontsource/ibm-plex-mono/400.css";
+@import "@fontsource/ibm-plex-mono/500.css";
+
+@theme {
+  --color-bg: #0f1110;
+  --color-surface: #161917;
+  --color-ink: #f1efe9;
+  --color-muted: #a9b0aa;
+  --color-line: #2a2e2b;
+  --color-accent: #9fd8b4;
+  --font-sans: "Instrument Sans Variable", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, monospace;
+  --breakpoint-mid: 900px;
+}
+
+html { background: var(--color-bg); color: var(--color-ink); }
+body { font-family: var(--font-sans); -webkit-font-smoothing: antialiased; }
