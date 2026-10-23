@@ -8,12 +8,14 @@ type SystemDiagramProps = {
 export default function SystemDiagram({ id }: SystemDiagramProps) {
   const diagram = diagrams[id];
   const frameRef = useRef<HTMLDivElement>(null);
-  const [activeId, setActiveId] = useState<string | null>(null);
+  const [hoveredId, setHoveredId] = useState<string | null>(null);
+  const [focusedId, setFocusedId] = useState<string | null>(null);
   const [drawn, setDrawn] = useState(
     () =>
       typeof window !== "undefined" &&
       window.matchMedia("(prefers-reduced-motion: reduce)").matches,
   );
+  const activeId = hoveredId ?? focusedId;
 
   useEffect(() => {
     if (drawn) return;
@@ -56,7 +58,7 @@ export default function SystemDiagram({ id }: SystemDiagramProps) {
       data-testid={`diagram-${id}`}
       className="py-2"
       onKeyDown={(event) => {
-        if (event.key === "Escape") setActiveId(null);
+        if (event.key === "Escape") setFocusedId(null);
       }}
     >
       <div
@@ -79,7 +81,7 @@ export default function SystemDiagram({ id }: SystemDiagramProps) {
                 pathLength={1}
                 data-edge={`${edge.from}->${edge.to}`}
                 data-active={isActive ? "true" : undefined}
-                className={`diagram-path ${isActive ? "text-accent" : "text-line"}`}
+                className={`diagram-path ${isActive ? "text-accent" : "text-connector"}`}
                 fill="none"
                 stroke="currentColor"
                 strokeWidth={1.25}
@@ -99,13 +101,13 @@ export default function SystemDiagram({ id }: SystemDiagramProps) {
               data-node={node.id}
               data-active={isActive ? "true" : undefined}
               aria-describedby={captionId}
-              onFocus={() => setActiveId(node.id)}
-              onMouseEnter={() => setActiveId(node.id)}
+              onFocus={() => setFocusedId(node.id)}
+              onMouseEnter={() => setHoveredId(node.id)}
               onMouseLeave={() =>
-                setActiveId((current) => (current === node.id ? null : current))
+                setHoveredId((current) => (current === node.id ? null : current))
               }
               onBlur={() =>
-                setActiveId((current) => (current === node.id ? null : current))
+                setFocusedId((current) => (current === node.id ? null : current))
               }
               style={{ left: `${node.x}%`, top: `${node.y}%` }}
               className={`absolute -translate-x-1/2 -translate-y-1/2 border bg-surface px-2 py-1.5 font-mono text-[0.6875rem] leading-none tracking-[0.02em] whitespace-nowrap transition-colors duration-[120ms] ${
