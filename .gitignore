@@ -8,5 +8,5 @@ test-results
 .env.local
 Melloria Resume.pdf
 resume.txt
-profile.jpg
-profile-crop.jpg
+/profile.jpg
+/profile-crop.jpg
