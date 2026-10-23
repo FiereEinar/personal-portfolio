@@ -1,7 +1,19 @@
+import Hero from "./components/Hero";
+import Nav from "./components/Nav";
+import Reveal from "./components/Reveal";
+
 export default function App() {
   return (
-    <main>
-      <h1>Nick Xylan Melloria</h1>
-    </main>
+    <>
+      <a href="#main" className="skip-link">
+        Skip to content
+      </a>
+      <Nav />
+      <main id="main">
+        <Reveal>
+          <Hero />
+        </Reveal>
+      </main>
+    </>
   );
 }
