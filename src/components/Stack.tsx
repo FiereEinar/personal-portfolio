@@ -1,4 +1,9 @@
 import { profile } from "../data/profile";
+import { techIcons, type TechIcon } from "../data/techIcons";
+
+const fallbackIcon: TechIcon = {
+  path: "M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm0 2a8 8 0 1 1 0 16 8 8 0 0 1 0-16z",
+};
 
 export default function Stack() {
   return (
@@ -21,18 +26,28 @@ export default function Stack() {
               <dt className="font-mono text-[0.8125rem] tracking-[0.02em] text-ink">
                 {group.label}
               </dt>
-              <dd className="mt-3 max-w-[46ch] text-base leading-[1.7] text-muted">
-                {group.items.map((item, index) => (
-                  <span key={item}>
-                    {index > 0 ? (
-                      <>
-                        {" "}
-                        <span aria-hidden="true">·</span>{" "}
-                      </>
-                    ) : null}
-                    {item}
-                  </span>
-                ))}
+              <dd className="mt-4">
+                <ul className="grid grid-cols-1 gap-x-6 gap-y-2 sm:grid-cols-2">
+                  {group.items.map((item) => {
+                    const icon = techIcons[item] ?? fallbackIcon;
+
+                    return (
+                      <li
+                        key={item}
+                        className="flex items-center gap-2.5 text-base leading-[1.7] text-muted"
+                      >
+                        <svg
+                          aria-hidden="true"
+                          viewBox="0 0 24 24"
+                          className="h-[1.125rem] w-[1.125rem] shrink-0 fill-current text-ink/70"
+                        >
+                          <path d={icon.path} />
+                        </svg>
+                        <span>{item}</span>
+                      </li>
+                    );
+                  })}
+                </ul>
               </dd>
             </div>
           ))}

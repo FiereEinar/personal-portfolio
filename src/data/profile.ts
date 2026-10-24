@@ -1,5 +1,5 @@
 export type Project = {
-  id: "sims" | "lapsync" | "cot-sbo";
+  id: "sims" | "lapsync";
   index: string;
   name: string;
   summary: string;
@@ -34,6 +34,7 @@ export type Profile = {
   degree: string;
   status: string;
   email: string;
+  phone: string;
   github: string;
   location: string;
   projects: Project[];
@@ -48,6 +49,7 @@ export const profile: Profile = {
   degree: "BS Information Technology · Bukidnon State University",
   status: "Open to software engineering roles.",
   email: "nickxylanmelloria@gmail.com",
+  phone: "+63 965 816 5470",
   github: "https://github.com/FiereEinar",
   location: "Malaybalay City",
   projects: [
@@ -82,18 +84,6 @@ export const profile: Profile = {
       stack: ["TypeScript", "React", "Express", "Node", "MongoDB", "Socket.IO"],
       source: "https://github.com/FiereEinar/lapsync",
       diagram: "lapsync",
-    },
-    {
-      id: "cot-sbo",
-      index: "03",
-      name: "COT-SBO System",
-      summary:
-        "Administrative system for the Council of Organizations and Teams–Student Body Organization at BSU.",
-      context: "A custom system built to streamline Student Body Organization operations.",
-      build: [
-        "Replaced manual record handling and reduced the data-entry and administrative workload.",
-      ],
-      stack: ["PHP", "Laravel", "Livewire", "MySQL"],
     },
   ],
   experience: [

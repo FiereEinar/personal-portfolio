@@ -69,6 +69,7 @@ the host run it) and set `VITE_SITE_URL` to the real origin in the project setti
 - `npm run optimize:portrait` reads `profile-crop.jpg` and writes the 900×1200
   `public/profile.jpg` used by the hero and the share card.
 - `Melloria Resume.pdf` is untracked and no résumé link is published. Before any
-  résumé link returns, add a phone-free PDF to `public/` and verify it contains no
-  phone number.
+  résumé link returns, add a copy you want public to `public/`.
+- The phone number is published in Contact at your request. It is visible in the
+  page source and can be scraped.
 - `.env`, `.env.local`, `.superpowers/`, and test/build output are gitignored.

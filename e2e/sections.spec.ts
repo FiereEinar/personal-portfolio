@@ -18,3 +18,11 @@ test("stack groups and education render", async ({ page }) => {
   await expect(page.locator("#education").getByText("The Odin Project")).toBeVisible();
   await expect(page.locator("#education").getByText("Apr 2023 – Sep 2024")).toBeVisible();
 });
+
+test("every stack item has an icon and a label", async ({ page }) => {
+  await page.goto("/");
+  const items = page.locator("#stack li");
+  await expect(items).toHaveCount(27);
+  await expect(page.locator("#stack li svg path")).toHaveCount(27);
+  await expect(items.first()).toContainText("TypeScript");
+});

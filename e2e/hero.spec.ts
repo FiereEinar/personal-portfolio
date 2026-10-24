@@ -11,12 +11,6 @@ test("hero shows identity, links, and portrait", async ({ page }) => {
   await expect(portrait).toHaveAttribute("width", "900");
 });
 
-test("no phone number is published", async ({ page }) => {
-  await page.goto("/");
-  await expect(page.locator("body")).not.toContainText(/(?:\+63|0)9\d{9}/);
-  await expect(page.locator('a[href^="tel:"]')).toHaveCount(0);
-});
-
 test("desktop nav shows Email, mobile nav shows sections", async ({ page }) => {
   await page.setViewportSize({ width: 1440, height: 900 });
   await page.goto("/");

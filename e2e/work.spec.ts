@@ -1,9 +1,9 @@
 import { test, expect } from "@playwright/test";
 
-test("three case studies render in order", async ({ page }) => {
+test("two case studies render in order", async ({ page }) => {
   await page.goto("/");
   const headings = page.locator("#work article h3");
-  await expect(headings).toHaveText(["SIMS", "LapSync", "COT-SBO System"]);
+  await expect(headings).toHaveText(["SIMS", "LapSync"]);
 });
 
 test("public repos are linked safely", async ({ page }) => {
@@ -17,5 +17,5 @@ test("public repos are linked safely", async ({ page }) => {
     await expect(link).toHaveAttribute("target", "_blank");
     await expect(link).toHaveAttribute("rel", "noopener noreferrer");
   }
-  await expect(page.locator("#cot-sbo").getByRole("link", { name: /View source/ })).toHaveCount(0);
+  await expect(page.locator("#cot-sbo")).toHaveCount(0);
 });

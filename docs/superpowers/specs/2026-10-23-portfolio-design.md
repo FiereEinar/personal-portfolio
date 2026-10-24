@@ -39,8 +39,8 @@ The site is not a freelance sales page and not a general personal homepage. Its 
 - Static output only. Deployable to Netlify, Vercel, or GitHub Pages with no server.
 - Content must come from the resume. Anything not on the resume is omitted, not guessed.
 - Portrait source: `profile.jpg` (1536×2048). A temporary tight crop exists at `profile-crop.jpg`; it will be replaced by a proper portrait later.
-- Phone number stays off the public site. The resume PDF is not published, because it contains the number; no résumé link ships until a phone-free copy exists.
-- Public repos: `github.com/FiereEinar/sbo-sims` and `github.com/FiereEinar/lapsync`. COT-SBO has no public repo.
+- Phone number is published in Contact at the owner's request. The resume PDF is not published; no résumé link ships until a copy you want public is added.
+- Public repos: `github.com/FiereEinar/sbo-sims` and `github.com/FiereEinar/lapsync`.
 
 ## Approaches considered
 
@@ -141,17 +141,17 @@ Left, vertically centered:
 - Links: GitHub, Email.
 - A short status line: "Open to software engineering roles." — true and useful to a recruiter.
 
-Mobile (<900px): portrait banner at 58svh above the copy, then the same information. No phone number.
+Mobile (<900px): portrait banner at 58svh above the copy, then the same information. The phone number appears in Contact, not here.
 
 ### 2. Selected work
 
-Three entries separated by hairlines, each with a mono index (`01`–`03`), an `h2`, a one-line summary, a short case study, the stack, and — for SIMS and LapSync — a hand-built SVG architecture diagram.
+Two entries separated by hairlines, each with a mono index (`01`–`02`), an `h2`, a one-line summary, a short case study, the stack, and a hand-built SVG architecture diagram.
 
 Entry layout alternates on desktop: text left / visual right, then reversed. Mobile stacks the visual under the text. Diagrams are labelled with the real components from the resume, never decorative lines.
 
-Each entry has a visual column. For now it holds the architecture diagram. Project screenshots can be added above the diagram later without a layout change; no placeholder image ships, and no screenshot is faked. COT-SBO has no visual column; it is a compact, full-width entry.
+Each entry has a visual column. For now it holds the architecture diagram. Project screenshots can be added above the diagram later without a layout change; no placeholder image ships, and no screenshot is faked.
 
-SIMS and LapSync carry an external "View source" link with a visible external-link affordance and focus state. COT-SBO carries no link.
+SIMS and LapSync carry an external "View source" link with a visible external-link affordance and focus state.
 
 **01 — SIMS**
 - Multi-tenant student information system for campus-wide use.
@@ -167,12 +167,6 @@ SIMS and LapSync carry an external "View source" link with a visible external-li
 - Source: `https://github.com/FiereEinar/lapsync`.
 - Diagram: RFID readers → raw `ws` ingest → checkpoint pipeline → Socket.IO → dashboard and mobile app.
 
-**03 — COT-SBO System**
-- Administrative system for the Council of Organizations and Teams–Student Body Organization at BSU.
-- Case study: replaced manual record handling for SBO operations and cut the data-entry workload.
-- Stack: PHP, Laravel, Livewire, MySQL.
-- No diagram and no link. A short entry is honest here; the resume does not describe the architecture and there is no public repo.
-
 ### 3. Experience
 
 Compact hairline rows, mono period on the left, role and organization on the right with two or three bullets each. No cards.
@@ -185,7 +179,7 @@ Periods are written exactly as the resume supports them. No end dates are invent
 
 ### 4. Stack
 
-Four plain groups, no logos and no icon chips: Languages, Frameworks & Libraries, Databases, Tools. Two columns on desktop, one on mobile.
+Four groups, each item carrying a monochrome brand mark beside its text label: Languages, Frameworks & Libraries, Databases, Tools. Two columns on desktop, one on mobile. Icons are decorative; the label stays the accessible name.
 
 ### 5. Education
 
@@ -193,8 +187,8 @@ Bukidnon State University — BS Information Technology, Apr 2023–present. The
 
 ### 6. Contact and footer
 
-- Large email link and GitHub link. No résumé download until a phone-free PDF exists.
-- Footer: name, year, and one line: "Built with React, TypeScript, and Tailwind."
+- Large email link, phone link, and GitHub link. No résumé download until a copy you want public exists.
+- Footer: name and year.
 
 ## Content rules
 
@@ -202,7 +196,7 @@ Bukidnon State University — BS Information Technology, Apr 2023–present. The
 - Copy is plain and specific. No "passionate", "innovative", "cutting-edge", "journey".
 - No emoji anywhere in the interface.
 - Project links point to `https://github.com/FiereEinar/sbo-sims` and `https://github.com/FiereEinar/lapsync`.
-- Contact links: `mailto:nickxylanmelloria@gmail.com`, `https://github.com/FiereEinar`.
+- Contact links: `mailto:nickxylanmelloria@gmail.com`, `tel:+639658165470`, `https://github.com/FiereEinar`.
 
 ## Implementation
 
@@ -256,11 +250,11 @@ public/
 
 ## Decisions made on your behalf
 
-- Case studies for each project rather than a compact list. SIMS and LapSync have enough material; COT-SBO stays short.
+- Case studies for each project rather than a compact list. SIMS and LapSync have enough material; COT-SBO remains in Experience only.
 - Mint accent chosen to fit the dark ground without the usual blue or purple.
-- No résumé download until you send a phone-free PDF. The site's email and GitHub links carry contact in the meantime.
-- No phone number.
-- Repo links for SIMS and LapSync, none for COT-SBO.
+- No résumé download until you send a copy you want public. The site's email, phone, and GitHub links carry contact in the meantime.
+- Phone number published in Contact, at your request.
+- Repo links for SIMS and LapSync.
 - Architecture diagrams as the project visual now; screenshots slot in above them when you attach them.
 - Checkpoint rail as the page-level signature, and playable diagrams as the content-level one.
 - No active-section highlight in the nav, because the rail carries that job and a second highlight would flicker against it.
