@@ -4,6 +4,7 @@
 @import "@fontsource/ibm-plex-mono/latin-500.css";
 
 @source "../index.html";
+@source "../projects.html";
 @source "../src/**/*.{ts,tsx}";
 
 @theme {
@@ -27,10 +28,10 @@ article[id] {
   scroll-margin-top: 5rem;
 }
 
-/* Keep the fixed checkpoint rail in its own left gutter. */
+/* Keep the fixed checkpoint rail in its own left gutter on the home page. */
 @media (width >= 900px) {
-  #main section,
-  footer {
+  #main[data-rail="true"] section,
+  #main[data-rail="true"] ~ footer {
     padding-left: 10rem;
   }
 }

@@ -9,7 +9,7 @@ export default function Hero() {
     >
       <div className="relative h-[58svh] mid:order-2 mid:h-full mid:min-h-svh">
         <img
-          src={`${import.meta.env.BASE_URL}profile.jpg`}
+          src={`${import.meta.env.BASE_URL}profile-pic.png`}
           width={900}
           height={1200}
           alt="Nick Xylan Melloria"

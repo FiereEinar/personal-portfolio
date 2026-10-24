@@ -1,7 +1,8 @@
 # Nick Xylan Melloria — Portfolio
 
-A single-page, recruiter-facing portfolio: Hero, selected work, experience, stack,
-education, and contact. Built with Vite, React, TypeScript, and Tailwind CSS.
+A multi-page, recruiter-facing portfolio: a home page with Hero, selected work,
+experience, stack, education, and contact, plus a projects index at
+`projects.html`. Built with Vite, React, TypeScript, and Tailwind CSS.
 
 ## Requirements
 
@@ -19,6 +20,13 @@ The dev server runs at <http://localhost:5173>.
 
 `.env` is gitignored. It only needs the two variables described below.
 
+## Pages
+
+- `/` is the home page with the two case studies, experience, stack, education,
+  and contact.
+- `/projects.html` is the full projects index: SAMS, Reboot Rebellion,
+  StatMastery, Pulse, Inventory CLI, SIMS, and LapSync.
+
 ## Commands
 
 | Command | Purpose |
@@ -27,6 +35,7 @@ The dev server runs at <http://localhost:5173>.
 | `npm run build` | Type-check, then build static files to `dist/` |
 | `npm run preview` | Serve the production build locally |
 | `npm run test:e2e` | Run the Playwright suite (starts its own dev server) |
+| `npm run check:base` | Build with `/repo/` and verify base-path references |
 | `npm run optimize:portrait` | Regenerate `public/profile.jpg` (900×1200) from `profile-crop.jpg` |
 
 ## Configuration
@@ -47,8 +56,9 @@ development only and points share cards at localhost.
 
 ## Deploy
 
-All three hosts serve the static `dist/` output. Run `npm run build` first (or let
-the host run it) and set `VITE_SITE_URL` to the real origin in the project settings.
+All three hosts serve the static `dist/` output, including `index.html` and
+`projects.html`. Run `npm run build` first (or let the host run it) and set
+`VITE_SITE_URL` to the real origin in the project settings.
 
 - **Netlify** — build command `npm run build`, publish directory `dist`.
 - **Vercel** — import the repo and use the Vite preset; build command `npm run build`,
@@ -66,6 +76,10 @@ the host run it) and set `VITE_SITE_URL` to the real origin in the project setti
 
 - `profile.jpg` and `profile-crop.jpg` at the repository root are originals and stay
   untracked. Only the generated `public/profile.jpg` is committed.
+- `public/projects/` holds the real project screenshots used on the projects page:
+  SAMS from the uploaded documentation, Reboot Rebellion and StatMastery from their
+  repositories. Pulse and Inventory CLI use typographic covers because no usable
+  screenshot is available yet.
 - `npm run optimize:portrait` reads `profile-crop.jpg` and writes the 900×1200
   `public/profile.jpg` used by the hero and the share card.
 - `Melloria Resume.pdf` is untracked and no résumé link is published. Before any

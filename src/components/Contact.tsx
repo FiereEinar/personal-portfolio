@@ -1,6 +1,8 @@
 import { profile } from "../data/profile";
 
 export default function Contact() {
+  const [emailUser, emailDomain] = profile.email.split("@");
+
   return (
     <section
       id="contact"
@@ -20,7 +22,8 @@ export default function Contact() {
             href={`mailto:${profile.email}`}
             className="inline-block max-w-full text-[clamp(1.375rem,4vw,2.75rem)] leading-[1.15] tracking-[-0.02em] text-accent underline decoration-accent/40 underline-offset-[6px] transition-colors duration-[120ms] [overflow-wrap:anywhere] hover:decoration-accent"
           >
-            {profile.email}
+            {emailUser}
+            <wbr />@{emailDomain}
           </a>
 
           <p className="mt-6 max-w-[46ch] text-base leading-[1.65] text-muted">

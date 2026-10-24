@@ -6,6 +6,12 @@ test("two case studies render in order", async ({ page }) => {
   await expect(headings).toHaveText(["SIMS", "LapSync"]);
 });
 
+test("selected work links to the projects page", async ({ page }) => {
+  await page.goto("/");
+  const link = page.getByRole("link", { name: /View all projects/ });
+  await expect(link).toHaveAttribute("href", "/projects.html");
+});
+
 test("public repos are linked safely", async ({ page }) => {
   await page.goto("/");
   for (const [id, url] of [

@@ -11,14 +11,20 @@ test("hero shows identity, links, and portrait", async ({ page }) => {
   await expect(portrait).toHaveAttribute("width", "900");
 });
 
-test("desktop nav shows Email, mobile nav shows sections", async ({ page }) => {
+test("desktop nav shows Projects and Email, mobile nav shows sections", async ({ page }) => {
   await page.setViewportSize({ width: 1440, height: 900 });
   await page.goto("/");
   const nav = page.getByRole("navigation", { name: "Primary" });
+  await expect(nav.getByTestId("nav-projects-desktop")).toBeVisible();
+  await expect(nav.getByTestId("nav-projects-desktop")).toHaveAttribute(
+    "href",
+    "/projects.html",
+  );
   await expect(nav.getByRole("link", { name: "Email" })).toBeVisible();
   await expect(nav.getByRole("link", { name: "Work" })).toBeHidden();
 
   await page.setViewportSize({ width: 390, height: 844 });
+  await expect(nav.getByTestId("nav-projects-mobile")).toBeVisible();
   await expect(nav.getByRole("link", { name: "Work" })).toBeVisible();
   await expect(nav.getByRole("link", { name: "Email" })).toBeHidden();
 });

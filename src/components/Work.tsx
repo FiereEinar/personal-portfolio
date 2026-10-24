@@ -99,6 +99,18 @@ export default function Work() {
             <ProjectEntry key={project.id} project={project} />
           ))}
         </div>
+
+        <div className="border-t border-line pt-6">
+          <a
+            href={`${import.meta.env.BASE_URL}projects.html`}
+            className="inline-flex items-center gap-2 text-base text-accent underline decoration-accent/40 underline-offset-4 transition-colors duration-[120ms] hover:decoration-accent"
+          >
+            View all projects
+            <span aria-hidden="true" className="font-mono text-xs">
+              →
+            </span>
+          </a>
+        </div>
       </div>
     </section>
   );

@@ -2,6 +2,7 @@ import CheckpointRail from "./components/CheckpointRail";
 import Contact, { Footer } from "./components/Contact";
 import Education from "./components/Education";
 import Experience from "./components/Experience";
+import HashScroll from "./components/HashScroll";
 import Hero from "./components/Hero";
 import Nav from "./components/Nav";
 import Reveal from "./components/Reveal";
@@ -14,9 +15,10 @@ export default function App() {
       <a href="#main" className="skip-link">
         Skip to content
       </a>
-      <Nav />
+      <Nav page="home" />
+      <HashScroll />
       <CheckpointRail />
-      <main id="main" tabIndex={-1}>
+      <main id="main" data-rail="true" tabIndex={-1}>
         <Reveal>
           <Hero />
         </Reveal>
