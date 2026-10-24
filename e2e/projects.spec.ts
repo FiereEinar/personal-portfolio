@@ -1,13 +1,13 @@
 import { test, expect } from "@playwright/test";
 
 const projects = [
+  ["sims", "https://github.com/FiereEinar/sbo-sims"],
+  ["lapsync", "https://github.com/FiereEinar/lapsync"],
   ["sams", "https://github.com/FiereEinar/sams"],
   ["reboot-rebellion", "https://github.com/FiereEinar/reboot-rebellion"],
   ["statmastery", "https://github.com/FiereEinar/statmastery"],
   ["pulse", "https://github.com/FiereEinar/pulse"],
   ["inventory-cli", "https://github.com/FiereEinar/inventory-system-cli"],
-  ["sims", "https://github.com/FiereEinar/sbo-sims"],
-  ["lapsync", "https://github.com/FiereEinar/lapsync"],
 ] as const;
 
 test("projects page has its own meta and navigation", async ({ page }) => {
@@ -16,7 +16,7 @@ test("projects page has its own meta and navigation", async ({ page }) => {
   await expect(page).toHaveTitle("Projects · Nick Xylan Melloria");
   await expect(page.locator('meta[name="description"]')).toHaveAttribute(
     "content",
-    /SAMS.*LapSync/,
+    /SIMS.*LapSync/,
   );
   await expect(page.locator('link[rel="canonical"]')).toHaveAttribute(
     "href",
@@ -43,20 +43,19 @@ test("projects page has its own meta and navigation", async ({ page }) => {
 test("all seven projects render in order", async ({ page }) => {
   await page.goto("/projects.html");
 
-  await expect(page.getByRole("heading", { name: "Featured build" })).toBeVisible();
+  await expect(page.getByRole("heading", { name: "Featured projects" })).toBeVisible();
   await expect(page.getByRole("heading", { name: "More projects" })).toBeVisible();
-  await expect(page.getByRole("heading", { name: "Case studies" })).toBeVisible();
 
   const cards = page.getByTestId("project-card");
   await expect(cards).toHaveCount(7);
   await expect(cards.locator("h3")).toHaveText([
+    "SIMS",
+    "LapSync",
     "SAMS",
     "Reboot Rebellion",
     "StatMastery",
     "Pulse",
     "Inventory CLI",
-    "SIMS",
-    "LapSync",
   ]);
 });
 
@@ -88,9 +87,12 @@ test("real project screenshots load and typographic covers stay honest", async (
   await page.goto("/projects.html");
 
   for (const [id, alt] of [
+    ["sims", /SIMS/],
+    ["lapsync", /LapSync/],
     ["sams", /SAMS dashboard/],
     ["reboot-rebellion", /Reboot Rebellion gameplay/],
     ["statmastery", /StatMastery course catalog/],
+    ["pulse", /Pulse/],
   ] as const) {
     const image = page.locator(`#${id}`).getByRole("img", { name: alt });
     await image.scrollIntoViewIfNeeded();
@@ -104,9 +106,7 @@ test("real project screenshots load and typographic covers stay honest", async (
     await expect(image).toHaveAttribute("src", /\/projects\/.+\.webp$/);
   }
 
-  await expect(page.locator("#pulse").locator("img")).toHaveCount(0);
   await expect(page.locator("#inventory-cli").locator("img")).toHaveCount(0);
-  await expect(page.getByTestId("project-cover-pulse")).toContainText("Pulse");
   await expect(page.getByTestId("project-cover-inventory-cli")).toContainText(
     "Inventory CLI",
   );

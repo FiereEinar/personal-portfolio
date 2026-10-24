@@ -22,33 +22,79 @@ export type ShowcaseProject = {
   coverLabel?: string;
 };
 
-export const featuredProject: ShowcaseProject = {
-  id: "sams",
-  index: "01",
-  name: "SAMS",
-  category: "Multi-tenant SaaS",
-  note: "Team final project · IT1313",
-  summary:
-    "A multi-tenant platform for student organizations to run events, masterlists, and attendance.",
-  details: [
-    "Tenant workspaces keep each organization's students, events, and attendance separate.",
-    "CSV and Excel imports, QR and barcode attendance, and exportable reports.",
-    "Role-based access, PayMongo subscriptions, and a central admin console.",
-  ],
-  stack: ["Laravel", "Inertia", "React", "TypeScript", "MySQL", "Tailwind"],
-  repo: "https://github.com/FiereEinar/sams",
-  image: {
-    src: "projects/sams-dashboard.webp",
-    alt: "SAMS dashboard showing attendance totals, an engagement trend chart, and recent events.",
-    width: 1600,
-    height: 822,
+export const featuredProjects: ShowcaseProject[] = [
+  {
+    id: "sims",
+    index: "01",
+    name: "SIMS",
+    category: "Student Information System",
+    summary:
+      "A multi-tenant student information system designed for campus-wide academic management, attendance tracking, and student records.",
+    details: [
+      "Electron client keeps working offline and syncs when connectivity returns.",
+      "Role-based portals for students, finances, and administration with real-time sync.",
+      "Caching, pagination, and tuned queries handle large campus datasets.",
+    ],
+    stack: ["TypeScript", "React", "Express", "Node.js", "MongoDB", "Electron"],
+    repo: "https://github.com/FiereEinar/sbo-sims",
+    caseStudy: "sims",
+    image: {
+      src: "projects/sims.webp",
+      alt: "SIMS student information management system dashboard overview and attendance interface.",
+      width: 1672,
+      height: 941,
+    },
   },
-};
+  {
+    id: "lapsync",
+    index: "02",
+    name: "LapSync",
+    category: "Event Management & Timing",
+    summary:
+      "A real-time race timing and event management platform with an admin dashboard, REST API, RFID reader telemetry, and participant app.",
+    details: [
+      "Dual-socket architecture: Socket.IO for dashboard updates, raw WebSockets for RFID telemetry.",
+      "Maps physical RFID scans to checkpoints and calculates participant progress in milliseconds.",
+      "Real-time leaderboard, participant management, and event device coordination.",
+    ],
+    stack: ["TypeScript", "React", "Express", "Node.js", "MongoDB", "Socket.IO"],
+    repo: "https://github.com/FiereEinar/lapsync",
+    caseStudy: "lapsync",
+    image: {
+      src: "projects/lapsync.webp",
+      alt: "LapSync event management and real-time race timing dashboard.",
+      width: 1672,
+      height: 941,
+    },
+  },
+];
 
 export const moreProjects: ShowcaseProject[] = [
   {
+    id: "sams",
+    index: "03",
+    name: "SAMS",
+    category: "Multi-tenant SaaS",
+    note: "Team final project · IT1313",
+    summary:
+      "A multi-tenant platform for student organizations to run events, masterlists, and attendance.",
+    details: [
+      "Tenant workspaces keep each organization's students, events, and attendance separate.",
+      "CSV and Excel imports, QR and barcode attendance, and exportable reports.",
+      "Role-based access, PayMongo subscriptions, and a central admin console.",
+    ],
+    stack: ["Laravel", "Inertia", "React", "TypeScript", "MySQL", "Tailwind"],
+    repo: "https://github.com/FiereEinar/sams",
+    image: {
+      src: "projects/sams-dashboard.webp",
+      alt: "SAMS dashboard showing attendance totals, an engagement trend chart, and recent events.",
+      width: 1600,
+      height: 822,
+    },
+  },
+  {
     id: "reboot-rebellion",
-    index: "02",
+    index: "04",
     name: "Reboot Rebellion",
     category: "Game",
     summary:
@@ -68,7 +114,7 @@ export const moreProjects: ShowcaseProject[] = [
   },
   {
     id: "statmastery",
-    index: "03",
+    index: "05",
     name: "StatMastery",
     category: "Learning platform",
     summary:
@@ -89,7 +135,7 @@ export const moreProjects: ShowcaseProject[] = [
   },
   {
     id: "pulse",
-    index: "04",
+    index: "06",
     name: "Pulse",
     category: "Social app",
     coverLabel: "Live demo",
@@ -102,10 +148,16 @@ export const moreProjects: ShowcaseProject[] = [
     stack: ["React", "Express", "Node.js", "MongoDB", "Tailwind", "Cloudinary"],
     repo: "https://github.com/FiereEinar/pulse",
     live: "https://pulse-rosy.vercel.app/",
+    image: {
+      src: "projects/pulse.webp",
+      alt: "Pulse social feed with posts and external API integrations.",
+      width: 1919,
+      height: 977,
+    },
   },
   {
     id: "inventory-cli",
-    index: "05",
+    index: "07",
     name: "Inventory CLI",
     category: "CLI tool",
     coverLabel: "CLI",
@@ -119,36 +171,4 @@ export const moreProjects: ShowcaseProject[] = [
   },
 ];
 
-export const caseStudies: ShowcaseProject[] = [
-  {
-    id: "sims",
-    index: "06",
-    name: "SIMS",
-    category: "Case study",
-    summary: "Multi-tenant student information system for campus-wide use.",
-    details: [
-      "Electron client keeps working offline and syncs when connectivity returns.",
-      "Caching, pagination, and tuned queries handle large campus datasets.",
-    ],
-    stack: ["TypeScript", "React", "Express", "Node", "MongoDB"],
-    repo: "https://github.com/FiereEinar/sbo-sims",
-    caseStudy: "sims",
-  },
-  {
-    id: "lapsync",
-    index: "07",
-    name: "LapSync",
-    category: "Case study",
-    summary:
-      "Real-time race timing platform with an admin dashboard, REST API, and participant app.",
-    details: [
-      "Dual-socket architecture: Socket.IO for dashboard updates, raw WebSockets for RFID telemetry.",
-      "Maps physical RFID scans to checkpoints and calculates participant progress in milliseconds.",
-    ],
-    stack: ["TypeScript", "React", "Express", "Node", "MongoDB", "Socket.IO"],
-    repo: "https://github.com/FiereEinar/lapsync",
-    caseStudy: "lapsync",
-  },
-];
-
-export const allProjects = [featuredProject, ...moreProjects, ...caseStudies];
+export const allProjects = [...featuredProjects, ...moreProjects];

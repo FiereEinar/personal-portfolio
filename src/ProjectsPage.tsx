@@ -6,8 +6,7 @@ import Reveal from "./components/Reveal";
 import { profile } from "./data/profile";
 import {
   allProjects,
-  caseStudies,
-  featuredProject,
+  featuredProjects,
   moreProjects,
   type ShowcaseProject,
 } from "./data/projects";
@@ -166,34 +165,17 @@ function ProjectCard({ project }: { project: ShowcaseProject }) {
       <p className="font-mono text-[0.75rem] tracking-[0.08em] text-muted">
         {project.index} / {project.category}
       </p>
+      {project.note ? (
+        <p className="mt-1 font-mono text-[0.75rem] tracking-[0.04em] text-muted">
+          {project.note}
+        </p>
+      ) : null}
 
       <div className="mt-4">
         <ProjectVisual project={project} />
       </div>
 
       <h3 className="mt-5 text-[clamp(1.5rem,2.4vw,2rem)] leading-[1.15] tracking-[-0.02em] text-ink">
-        {project.name}
-      </h3>
-
-      <p className="mt-3 max-w-[52ch] text-base leading-[1.65] text-ink">
-        {project.summary}
-      </p>
-
-      <ProjectDetails project={project} />
-      <ProjectStack project={project} />
-      <ProjectLinks project={project} />
-    </article>
-  );
-}
-
-function CaseStudyCard({ project }: { project: ShowcaseProject }) {
-  return (
-    <article id={project.id} data-testid="project-card" className="border-t border-line pt-6">
-      <p className="font-mono text-[0.75rem] tracking-[0.08em] text-muted">
-        {project.index} / {project.category}
-      </p>
-
-      <h3 className="mt-3 text-[clamp(1.5rem,2.4vw,2rem)] leading-[1.15] tracking-[-0.02em] text-ink">
         {project.name}
       </h3>
 
@@ -230,8 +212,9 @@ export default function ProjectsPage() {
                 Projects
               </h1>
               <p className="mt-6 max-w-[58ch] text-base leading-[1.65] text-muted">
-                Seven projects across SaaS, games, learning tools, social apps, and a C CLI.
-                SIMS and LapSync have full case studies on the home page.
+                Seven projects across student management, real-time timing, SaaS platforms,
+                games, and developer tools. SIMS and LapSync are featured builds with full in-page
+                case studies on the home page.
               </p>
               <div className="mt-8 flex flex-wrap items-center gap-x-8 gap-y-3">
                 <ExternalLink href={profile.github}>GitHub profile</ExternalLink>
@@ -256,10 +239,12 @@ export default function ProjectsPage() {
                 id="featured-heading"
                 className="font-mono text-[0.8125rem] tracking-[0.18em] text-muted uppercase"
               >
-                Featured build
+                Featured projects
               </h2>
-              <div className="mt-8">
-                <FeaturedProject project={featuredProject} />
+              <div className="mt-8 space-y-16 mid:space-y-24">
+                {featuredProjects.map((project) => (
+                  <FeaturedProject key={project.id} project={project} />
+                ))}
               </div>
             </div>
           </section>
@@ -280,27 +265,6 @@ export default function ProjectsPage() {
               <div className="mt-10 grid gap-x-10 gap-y-14 mid:grid-cols-2">
                 {moreProjects.map((project) => (
                   <ProjectCard key={project.id} project={project} />
-                ))}
-              </div>
-            </div>
-          </section>
-        </Reveal>
-
-        <Reveal>
-          <section
-            aria-labelledby="case-studies-heading"
-            className="px-6 py-16 mid:px-10 mid:py-20"
-          >
-            <div className="mx-auto max-w-6xl">
-              <h2
-                id="case-studies-heading"
-                className="font-mono text-[0.8125rem] tracking-[0.18em] text-muted uppercase"
-              >
-                Case studies
-              </h2>
-              <div className="mt-10 grid gap-x-10 gap-y-12 mid:grid-cols-2">
-                {caseStudies.map((project) => (
-                  <CaseStudyCard key={project.id} project={project} />
                 ))}
               </div>
             </div>

@@ -24,8 +24,8 @@ The dev server runs at <http://localhost:5173>.
 
 - `/` is the home page with the two case studies, experience, stack, education,
   and contact.
-- `/projects.html` is the full projects index: SAMS, Reboot Rebellion,
-  StatMastery, Pulse, Inventory CLI, SIMS, and LapSync.
+- `/projects.html` is the full projects index: SIMS, LapSync, SAMS, Reboot Rebellion,
+  StatMastery, Pulse, and Inventory CLI.
 
 ## Commands
 
@@ -77,9 +77,8 @@ All three hosts serve the static `dist/` output, including `index.html` and
 - `profile.jpg` and `profile-crop.jpg` at the repository root are originals and stay
   untracked. Only the generated `public/profile.jpg` is committed.
 - `public/projects/` holds the real project screenshots used on the projects page:
-  SAMS from the uploaded documentation, Reboot Rebellion and StatMastery from their
-  repositories. Pulse and Inventory CLI use typographic covers because no usable
-  screenshot is available yet.
+  SIMS, LapSync, SAMS, Reboot Rebellion, StatMastery, and Pulse. Inventory CLI uses
+  a typographic cover because no screenshot is applicable for the terminal app.
 - `npm run optimize:portrait` reads `profile-crop.jpg` and writes the 900×1200
   `public/profile.jpg` used by the hero and the share card.
 - `Melloria Resume.pdf` is untracked and no résumé link is published. Before any
