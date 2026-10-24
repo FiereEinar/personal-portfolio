@@ -14,6 +14,18 @@ test("meta tags and portrait are correct", async ({ page }) => {
   await expect(page.locator('meta[property="og:image:height"]')).toHaveAttribute("content", "1200");
   await expect(page.locator('link[rel="icon"][type="image/svg+xml"]')).toHaveAttribute("href", /favicon\.svg$/);
   await expect(page.locator('link[rel="icon"][type="image/png"]')).toHaveAttribute("href", /favicon\.png$/);
-  const width = await page.getByRole("img", { name: "Nick Xylan Melloria" }).evaluate((el) => (el as HTMLImageElement).naturalWidth);
-  expect(width).toBe(900);
+  const portrait = page.getByRole("img", { name: "Nick Xylan Melloria" });
+  await expect(portrait).toBeVisible();
+  await portrait.evaluate((el) => (el as HTMLImageElement).decode());
+  const dimensions = await portrait.evaluate((el) => {
+    const image = el as HTMLImageElement;
+    return {
+      complete: image.complete,
+      width: image.naturalWidth,
+      height: image.naturalHeight,
+    };
+  });
+  expect(dimensions.complete).toBe(true);
+  expect(dimensions.width).toBeGreaterThan(0);
+  expect(dimensions.height / dimensions.width).toBeCloseTo(4 / 3, 2);
 });

@@ -4,7 +4,19 @@ import { join } from "node:path";
 
 const outDir = ".base-check";
 const viteBin = join(process.cwd(), "node_modules", "vite", "bin", "vite.js");
-const portraitReference = /(["'`])\/profile\.jpg\1/;
+const heroSource = await readFile(
+  join(process.cwd(), "src", "components", "Hero.tsx"),
+  "utf8",
+);
+const portraitAsset = heroSource.match(/BASE_URL\}([\w.-]+)/)?.[1];
+
+if (!portraitAsset) {
+  throw new Error("could not find the hero portrait asset in Hero.tsx");
+}
+
+const escapedAsset = portraitAsset.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+const portraitReference = new RegExp(`(["'\`])/${escapedAsset}\\1`);
+const bundledReference = `/repo/${portraitAsset}`;
 
 try {
   const build = spawnSync(
@@ -35,8 +47,8 @@ try {
   const bundled = (
     await Promise.all(scripts.map((script) => readFile(join(assetsDir, script), "utf8")))
   ).join("\n");
-  if (!bundled.includes("/repo/profile.jpg")) {
-    throw new Error("expected /repo/profile.jpg in the bundle; the base path was not applied");
+  if (!bundled.includes(bundledReference)) {
+    throw new Error(`expected ${bundledReference} in the bundle; the base path was not applied`);
   }
 
   console.log(
