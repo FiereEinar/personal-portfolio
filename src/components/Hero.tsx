@@ -75,7 +75,7 @@ function Chip({ icon, children }: { icon: ReactNode; children: ReactNode }) {
       <span aria-hidden="true" className="flex items-center text-accent">
         {icon}
       </span>
-      <strong className="font-semibold tracking-[-0.01em]">{children}</strong>
+      <span className="font-semibold tracking-[-0.01em]">{children}</span>
     </span>
   );
 }
@@ -88,7 +88,7 @@ export default function Hero() {
       className="scroll-mt-20 px-6 pt-20 pb-16 mid:grid mid:grid-cols-[auto_1fr] mid:items-center mid:gap-14 mid:pt-28 mid:pb-24 mid:pr-16"
     >
       {/* ── Portrait ── */}
-      <div className="mb-10 aspect-square w-full max-w-[240px] shrink-0 overflow-hidden rounded-full border border-line mid:mb-0 mid:max-w-[380px]">
+      <div className="mb-10 aspect-square w-full max-w-[240px] shrink-0 overflow-hidden rounded-full border border-line mid:mb-0 mid:max-w-[320px]">
         <img
           src={`${import.meta.env.BASE_URL}profile-pic.png`}
           width={900}

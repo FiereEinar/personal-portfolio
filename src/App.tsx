@@ -1,4 +1,5 @@
 import { Route, Routes } from "react-router-dom";
+import ContactPage from "./ContactPage";
 import ProjectsPage from "./ProjectsPage";
 import CheckpointRail from "./components/CheckpointRail";
 import Contact, { Footer } from "./components/Contact";
@@ -17,7 +18,7 @@ function HomePage() {
       <a href="#main" className="skip-link">
         Skip to content
       </a>
-      <Nav page="home" />
+      <Nav />
       <HashScroll />
       <CheckpointRail />
       <main id="main" data-rail="true" tabIndex={-1}>
@@ -50,6 +51,7 @@ export default function App() {
     <Routes>
       <Route path="/" element={<HomePage />} />
       <Route path="/projects" element={<ProjectsPage />} />
+      <Route path="/contact" element={<ContactPage />} />
     </Routes>
   );
 }
