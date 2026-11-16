@@ -1,15 +1,11 @@
 import { useEffect, useState } from "react";
+import { Link, useLocation } from "react-router-dom";
 import { profile } from "../data/profile";
 
-type NavProps = {
-  page?: "home" | "projects";
-};
+export default function Nav({ page: _page }: { page?: "home" | "projects" }) {
+  const { pathname } = useLocation();
+  const page = pathname === "/projects" ? "projects" : "home";
 
-const base = import.meta.env.BASE_URL;
-const projectsHref = `${base}projects.html`;
-const homeHref = base;
-
-export default function Nav({ page = "home" }: NavProps) {
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
@@ -19,8 +15,8 @@ export default function Nav({ page = "home" }: NavProps) {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  const projectsCurrent =
-    page === "projects" ? ({ "aria-current": "page" } as const) : {};
+  const linkBase =
+    "inline-flex min-h-11 items-center text-muted underline decoration-transparent underline-offset-4 transition-colors duration-[120ms] hover:text-ink hover:decoration-line";
 
   return (
     <nav
@@ -29,65 +25,67 @@ export default function Nav({ page = "home" }: NavProps) {
       className="fixed inset-x-0 top-0 z-50 h-14 border-b border-transparent bg-bg transition-colors duration-[120ms] data-[scrolled=true]:border-line"
     >
       <div className="flex h-full items-center justify-between px-6 mid:px-10">
-        <a
-          href={page === "home" ? "#hero" : homeHref}
-          className="inline-flex min-h-11 items-center font-mono text-sm font-medium tracking-[0.18em] text-ink"
-        >
-          NXM
-        </a>
+        {/* Logo */}
+        {page === "home" ? (
+          <a href="#hero" className="inline-flex min-h-11 items-center font-mono text-sm font-medium tracking-[0.18em] text-ink">
+            NXM
+          </a>
+        ) : (
+          <Link to="/" className="inline-flex min-h-11 items-center font-mono text-sm font-medium tracking-[0.18em] text-ink">
+            NXM
+          </Link>
+        )}
 
+        {/* Desktop links */}
         <div className="flex items-center gap-6 text-sm">
           {page === "projects" ? (
-            <a
-              href={homeHref}
-              data-testid="nav-home-desktop"
-              className="hidden min-h-11 items-center text-muted underline decoration-transparent underline-offset-4 transition-colors duration-[120ms] hover:text-ink hover:decoration-line mid:inline-flex"
-            >
+            <Link to="/" data-testid="nav-home-desktop" className={`hidden mid:inline-flex ${linkBase}`}>
               Home
-            </a>
+            </Link>
           ) : null}
 
-          <a
-            href={projectsHref}
-            {...projectsCurrent}
+          <Link
+            to="/projects"
+            aria-current={page === "projects" ? "page" : undefined}
             data-testid="nav-projects-desktop"
-            className="hidden min-h-11 items-center text-muted underline decoration-transparent underline-offset-4 transition-colors duration-[120ms] hover:text-ink hover:decoration-line mid:inline-flex"
+            className={`hidden mid:inline-flex ${linkBase}`}
           >
             Projects
-          </a>
+          </Link>
 
-          <a
-            href={`mailto:${profile.email}`}
-            className="hidden min-h-11 items-center text-muted underline decoration-transparent underline-offset-4 transition-colors duration-[120ms] hover:text-ink hover:decoration-line mid:inline-flex"
-          >
+          <a href={`mailto:${profile.email}`} className={`hidden mid:inline-flex ${linkBase}`}>
             Email
           </a>
 
+          {/* Mobile links */}
           <div className="flex items-center gap-2.5 text-[0.8125rem] mid:hidden">
-            <a
-              href={page === "home" ? "#work" : homeHref}
-              className="inline-flex min-h-11 items-center text-muted underline decoration-transparent underline-offset-4 transition-colors duration-[120ms] hover:text-ink hover:decoration-line"
-            >
-              {page === "home" ? "Work" : "Home"}
-            </a>
-            <a
-              href={projectsHref}
-              {...projectsCurrent}
+            {page === "home" ? (
+              <a href="#work" className={linkBase}>
+                Work
+              </a>
+            ) : (
+              <Link to="/" className={linkBase}>
+                Home
+              </Link>
+            )}
+
+            <Link
+              to="/projects"
+              aria-current={page === "projects" ? "page" : undefined}
               data-testid="nav-projects-mobile"
-              className="inline-flex min-h-11 items-center text-muted underline decoration-transparent underline-offset-4 transition-colors duration-[120ms] hover:text-ink hover:decoration-line"
+              className={linkBase}
             >
               Projects
-            </a>
+            </Link>
+
             <a
-              href={page === "home" ? "#experience" : `${base}#experience`}
-              className="inline-flex min-h-11 items-center text-muted underline decoration-transparent underline-offset-4 transition-colors duration-[120ms] hover:text-ink hover:decoration-line"
+              href={page === "home" ? "#experience" : "/#experience"}
+              className={linkBase}
             >
               Experience
             </a>
-            <a
-              href="#contact"
-              className="inline-flex min-h-11 items-center text-muted underline decoration-transparent underline-offset-4 transition-colors duration-[120ms] hover:text-ink hover:decoration-line"
-            >
+
+            <a href={page === "home" ? "#contact" : "/#contact"} className={linkBase}>
               Contact
             </a>
           </div>

@@ -79,7 +79,7 @@ function ProjectVisual({ project }: { project: ShowcaseProject }) {
 }
 
 function ProjectLinks({ project }: { project: ShowcaseProject }) {
-  const caseStudyHref = project.caseStudy ? `${base}#${project.caseStudy}` : undefined;
+  const caseStudyHref = project.caseStudy ? `/#${project.caseStudy}` : undefined;
 
   return (
     <div className="mt-5 flex flex-wrap items-center gap-x-6 gap-y-2">

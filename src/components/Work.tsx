@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { profile, type Project } from "../data/profile";
 import SystemDiagram from "./SystemDiagram";
 
@@ -101,15 +102,15 @@ export default function Work() {
         </div>
 
         <div className="border-t border-line pt-6">
-          <a
-            href={`${import.meta.env.BASE_URL}projects.html`}
+          <Link
+            to="/projects"
             className="inline-flex items-center gap-2 text-base text-accent underline decoration-accent/40 underline-offset-4 transition-colors duration-[120ms] hover:decoration-accent"
           >
             View all projects
             <span aria-hidden="true" className="font-mono text-xs">
               →
             </span>
-          </a>
+          </Link>
         </div>
       </div>
     </section>

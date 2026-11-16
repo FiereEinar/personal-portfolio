@@ -1,3 +1,5 @@
+import { Route, Routes } from "react-router-dom";
+import ProjectsPage from "./ProjectsPage";
 import CheckpointRail from "./components/CheckpointRail";
 import Contact, { Footer } from "./components/Contact";
 import Education from "./components/Education";
@@ -9,7 +11,7 @@ import Reveal from "./components/Reveal";
 import Stack from "./components/Stack";
 import Work from "./components/Work";
 
-export default function App() {
+function HomePage() {
   return (
     <>
       <a href="#main" className="skip-link">
@@ -40,5 +42,14 @@ export default function App() {
       </main>
       <Footer />
     </>
+  );
+}
+
+export default function App() {
+  return (
+    <Routes>
+      <Route path="/" element={<HomePage />} />
+      <Route path="/projects" element={<ProjectsPage />} />
+    </Routes>
   );
 }
