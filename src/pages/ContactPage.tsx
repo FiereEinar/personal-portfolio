@@ -1,26 +1,26 @@
-import { useState } from "react";
-import { Footer } from "./components/Contact";
-import HashScroll from "./components/HashScroll";
-import Nav from "./components/Nav";
-import Reveal from "./components/Reveal";
-import { profile } from "./data/profile";
+import { useState } from 'react';
+import { Footer } from '../components/Contact';
+import HashScroll from '../components/HashScroll';
+import Nav from '../components/Nav';
+import Reveal from '../components/Reveal';
+import { profile } from '../data/profile';
 
 type Field = { name: string; email: string; subject: string; message: string };
-type FormState = "idle" | "submitted";
+type FormState = 'idle' | 'submitted';
 
 const inputClass =
-  "block w-full border border-line bg-surface px-4 py-3 text-base text-ink " +
-  "placeholder:text-muted/40 focus:border-accent/50 focus:outline-none " +
-  "focus:ring-1 focus:ring-accent/30 transition-colors duration-[120ms]";
+  'block w-full border border-line bg-surface px-4 py-3 text-base text-ink ' +
+  'placeholder:text-muted/40 focus:border-accent/50 focus:outline-none ' +
+  'focus:ring-1 focus:ring-accent/30 transition-colors duration-[120ms]';
 
 export default function ContactPage() {
   const [fields, setFields] = useState<Field>({
-    name: "",
-    email: "",
-    subject: "",
-    message: "",
+    name: '',
+    email: '',
+    subject: '',
+    message: '',
   });
-  const [status, setStatus] = useState<FormState>("idle");
+  const [status, setStatus] = useState<FormState>('idle');
 
   function handleChange(
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
@@ -30,12 +30,12 @@ export default function ContactPage() {
 
   function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
-    setStatus("submitted");
+    setStatus('submitted');
   }
 
   function handleReset() {
-    setFields({ name: "", email: "", subject: "", message: "" });
-    setStatus("idle");
+    setFields({ name: '', email: '', subject: '', message: '' });
+    setStatus('idle');
   }
 
   return (
@@ -70,7 +70,7 @@ export default function ContactPage() {
             <div className="mx-auto max-w-6xl mid:grid mid:grid-cols-[1fr_22rem] mid:gap-20">
               {/* ── Contact Form ── */}
               <div>
-                {status === "submitted" ? (
+                {status === 'submitted' ? (
                   <div
                     role="alert"
                     className="border border-accent/25 bg-accent/5 p-8"
@@ -82,8 +82,10 @@ export default function ContactPage() {
                       Thank you for reaching out!
                     </h2>
                     <p className="mt-3 max-w-[46ch] text-base leading-[1.65] text-muted">
-                      Your message has been recorded. I'll get back to you at{" "}
-                      <span className="text-ink">{fields.email || "your email"}</span>{" "}
+                      Your message has been recorded. I'll get back to you at{' '}
+                      <span className="text-ink">
+                        {fields.email || 'your email'}
+                      </span>{' '}
                       as soon as possible.
                     </p>
                     <button
@@ -95,7 +97,11 @@ export default function ContactPage() {
                     </button>
                   </div>
                 ) : (
-                  <form onSubmit={handleSubmit} noValidate className="space-y-6">
+                  <form
+                    onSubmit={handleSubmit}
+                    noValidate
+                    className="space-y-6"
+                  >
                     <div className="grid gap-6 sm:grid-cols-2">
                       {/* Name */}
                       <div className="space-y-2">
@@ -229,7 +235,7 @@ export default function ContactPage() {
                       Phone / Mobile
                     </p>
                     <a
-                      href={`tel:${profile.phone.replace(/\s+/g, "")}`}
+                      href={`tel:${profile.phone.replace(/\s+/g, '')}`}
                       className="mt-1.5 inline-block text-base text-accent underline decoration-accent/40 underline-offset-4 transition-colors duration-[120ms] hover:decoration-accent"
                     >
                       {profile.phone}

@@ -1,19 +1,25 @@
-import type { ReactNode } from "react";
-import Contact, { Footer } from "./components/Contact";
-import HashScroll from "./components/HashScroll";
-import Nav from "./components/Nav";
-import Reveal from "./components/Reveal";
-import { profile } from "./data/profile";
+import type { ReactNode } from 'react';
+import Contact, { Footer } from '../components/Contact';
+import HashScroll from '../components/HashScroll';
+import Nav from '../components/Nav';
+import Reveal from '../components/Reveal';
+import { profile } from '../data/profile';
 import {
   allProjects,
   featuredProjects,
   moreProjects,
   type ShowcaseProject,
-} from "./data/projects";
+} from '../data/projects';
 
 const base = import.meta.env.BASE_URL;
 
-function ExternalLink({ href, children }: { href: string; children: ReactNode }) {
+function ExternalLink({
+  href,
+  children,
+}: {
+  href: string;
+  children: ReactNode;
+}) {
   return (
     <a
       href={href}
@@ -45,7 +51,7 @@ function ProjectVisual({ project }: { project: ShowcaseProject }) {
           loading="lazy"
           decoding="async"
           className={`aspect-[16/10] w-full object-cover ${
-            project.image.position === "left" ? "object-left-top" : "object-top"
+            project.image.position === 'left' ? 'object-left-top' : 'object-top'
           }`}
         />
       </div>
@@ -79,7 +85,9 @@ function ProjectVisual({ project }: { project: ShowcaseProject }) {
 }
 
 function ProjectLinks({ project }: { project: ShowcaseProject }) {
-  const caseStudyHref = project.caseStudy ? `/#${project.caseStudy}` : undefined;
+  const caseStudyHref = project.caseStudy
+    ? `/#${project.caseStudy}`
+    : undefined;
 
   return (
     <div className="mt-5 flex flex-wrap items-center gap-x-6 gap-y-2">
@@ -91,7 +99,9 @@ function ProjectLinks({ project }: { project: ShowcaseProject }) {
           Read case study
         </a>
       ) : null}
-      {project.live ? <ExternalLink href={project.live}>Live demo</ExternalLink> : null}
+      {project.live ? (
+        <ExternalLink href={project.live}>Live demo</ExternalLink>
+      ) : null}
       <ExternalLink href={project.repo}>Source</ExternalLink>
     </div>
   );
@@ -117,7 +127,7 @@ function ProjectStack({ project }: { project: ShowcaseProject }) {
     <p className="mt-5 font-mono text-[0.75rem] leading-[1.7] tracking-[0.04em] text-muted">
       <span className="text-ink">Stack</span>
       <span aria-hidden="true"> · </span>
-      {project.stack.join(" · ")}
+      {project.stack.join(' · ')}
     </p>
   );
 }
@@ -161,7 +171,11 @@ function FeaturedProject({ project }: { project: ShowcaseProject }) {
 
 function ProjectCard({ project }: { project: ShowcaseProject }) {
   return (
-    <article id={project.id} data-testid="project-card" className="border-t border-line pt-5">
+    <article
+      id={project.id}
+      data-testid="project-card"
+      className="border-t border-line pt-5"
+    >
       <p className="font-mono text-[0.75rem] tracking-[0.08em] text-muted">
         {project.index} / {project.category}
       </p>
@@ -206,18 +220,20 @@ export default function ProjectsPage() {
           >
             <div className="mx-auto max-w-6xl">
               <p className="font-mono text-[0.8125rem] tracking-[0.18em] text-muted uppercase">
-                Projects / {String(allProjects.length).padStart(2, "0")}
+                Projects / {String(allProjects.length).padStart(2, '0')}
               </p>
               <h1 className="mt-4 max-w-[16ch] text-[clamp(2.75rem,6vw,5rem)] leading-[1.02] tracking-[-0.03em] text-ink">
                 Projects
               </h1>
               <p className="mt-6 max-w-[58ch] text-base leading-[1.65] text-muted">
-                Seven projects across student management, real-time timing, SaaS platforms,
-                games, and developer tools. SIMS and LapSync are featured builds with full in-page
-                case studies on the home page.
+                Seven projects across student management, real-time timing, SaaS
+                platforms, games, and developer tools. SIMS and LapSync are
+                featured builds with full in-page case studies on the home page.
               </p>
               <div className="mt-8 flex flex-wrap items-center gap-x-8 gap-y-3">
-                <ExternalLink href={profile.github}>GitHub profile</ExternalLink>
+                <ExternalLink href={profile.github}>
+                  GitHub profile
+                </ExternalLink>
                 <a
                   href={`mailto:${profile.email}`}
                   className="text-base text-accent underline decoration-accent/40 underline-offset-4 transition-colors duration-[120ms] hover:decoration-accent"

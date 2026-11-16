@@ -20,7 +20,33 @@
   --breakpoint-mid: 900px;
 }
 
-html { background: var(--color-bg); color: var(--color-ink); }
+html.light {
+  --color-bg: #f8f7f4;
+  --color-surface: #ffffff;
+  --color-ink: #161816;
+  --color-muted: #5e6660;
+  --color-line: #e3e0d8;
+  --color-connector: #949e96;
+  --color-accent: #1e7048;
+  color-scheme: light;
+}
+
+html.dark {
+  --color-bg: #0f1110;
+  --color-surface: #161917;
+  --color-ink: #f1efe9;
+  --color-muted: #a9b0aa;
+  --color-line: #2a2e2b;
+  --color-connector: #5c665f;
+  --color-accent: #9fd8b4;
+  color-scheme: dark;
+}
+
+html {
+  background: var(--color-bg);
+  color: var(--color-ink);
+  transition: background-color 150ms ease, color 150ms ease;
+}
 body { font-family: var(--font-sans); -webkit-font-smoothing: antialiased; }
 
 section[id],

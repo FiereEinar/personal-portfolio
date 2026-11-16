@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { profile } from '../data/profile';
+import ThemeToggle from './ThemeToggle';
 
 export default function Nav({ page: _page }: { page?: string } = {}) {
   const { pathname } = useLocation();
@@ -25,7 +25,7 @@ export default function Nav({ page: _page }: { page?: string } = {}) {
     <nav
       aria-label="Primary"
       data-scrolled={scrolled ? 'true' : 'false'}
-      className="fixed inset-x-0 top-0 z-50 h-14 border-b border-transparent bg-bg transition-colors duration-[120ms] data-[scrolled=true]:border-line"
+      className="fixed inset-x-0 top-0 z-50 h-14 border-b border-transparent bg-bg/90 backdrop-blur-sm transition-colors duration-[120ms] data-[scrolled=true]:border-line"
     >
       <div className="flex h-full items-center justify-between px-6 mid:px-10">
         {/* Logo */}
@@ -45,23 +45,17 @@ export default function Nav({ page: _page }: { page?: string } = {}) {
           </Link>
         )}
 
-        {/* Desktop links */}
-        <div className="flex items-center gap-6 text-sm">
-          {!isHome ? (
-            <Link
-              to="/"
-              data-testid="nav-home-desktop"
-              className={`hidden mid:inline-flex ${linkBase}`}
-            >
-              Home
-            </Link>
-          ) : null}
+        {/* Desktop links (visible only on mid screens and up) */}
+        <div className="hidden items-center gap-6 text-sm mid:flex">
+          <Link to="/" data-testid="nav-home-desktop" className={linkBase}>
+            Home
+          </Link>
 
           <Link
             to="/projects"
             aria-current={isProjects ? 'page' : undefined}
             data-testid="nav-projects-desktop"
-            className={`hidden mid:inline-flex ${linkBase} ${isProjects ? activeLink : ''}`}
+            className={`${linkBase} ${isProjects ? activeLink : ''}`}
           >
             Projects
           </Link>
@@ -70,41 +64,42 @@ export default function Nav({ page: _page }: { page?: string } = {}) {
             to="/contact"
             aria-current={isContact ? 'page' : undefined}
             data-testid="nav-contact-desktop"
-            className={`hidden mid:inline-flex ${linkBase} ${isContact ? activeLink : ''}`}
+            className={`${linkBase} ${isContact ? activeLink : ''}`}
           >
             Contact
           </Link>
 
-          {/* Mobile links */}
-          <div className="flex items-center gap-3 text-[0.8125rem] mid:hidden">
-            {isHome ? (
-              <a href="#work" className={linkBase}>
-                Work
-              </a>
-            ) : (
-              <Link to="/" className={linkBase}>
-                Home
-              </Link>
-            )}
-
-            <Link
-              to="/projects"
-              aria-current={isProjects ? 'page' : undefined}
-              data-testid="nav-projects-mobile"
-              className={`${linkBase} ${isProjects ? activeLink : ''}`}
-            >
-              Projects
-            </Link>
-
-            <Link
-              to="/contact"
-              aria-current={isContact ? 'page' : undefined}
-              data-testid="nav-contact-mobile"
-              className={`${linkBase} ${isContact ? activeLink : ''}`}
-            >
-              Contact
-            </Link>
+          {/* Theme Switcher */}
+          <div className="flex items-center pl-2">
+            <ThemeToggle />
           </div>
+        </div>
+
+        {/* Mobile links (visible only on small screens) */}
+        <div className="flex items-center gap-3 text-[0.8125rem] mid:hidden">
+          <Link to="/" className={linkBase}>
+            Home
+          </Link>
+
+          <Link
+            to="/projects"
+            aria-current={isProjects ? 'page' : undefined}
+            data-testid="nav-projects-mobile"
+            className={`${linkBase} ${isProjects ? activeLink : ''}`}
+          >
+            Projects
+          </Link>
+
+          <Link
+            to="/contact"
+            aria-current={isContact ? 'page' : undefined}
+            data-testid="nav-contact-mobile"
+            className={`${linkBase} ${isContact ? activeLink : ''}`}
+          >
+            Contact
+          </Link>
+
+          <ThemeToggle />
         </div>
       </div>
     </nav>

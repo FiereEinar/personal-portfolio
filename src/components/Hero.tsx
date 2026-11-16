@@ -85,7 +85,7 @@ export default function Hero() {
     <section
       id="hero"
       data-testid="hero"
-      className="scroll-mt-20 px-6 pt-20 pb-16 mid:grid mid:grid-cols-[auto_1fr] mid:items-center mid:gap-14 mid:pt-28 mid:pb-24 mid:pr-16"
+      className="scroll-mt-20 px-6 pt-20 pb-16 mid:grid mid:grid-cols-[auto_1fr] mid:items-center mid:gap-14 mid:pt-38 mid:pb-24 mid:pr-16"
     >
       {/* ── Portrait ── */}
       <div className="mb-10 aspect-square w-full max-w-[240px] shrink-0 overflow-hidden rounded-full border border-line mid:mb-0 mid:max-w-[320px]">
