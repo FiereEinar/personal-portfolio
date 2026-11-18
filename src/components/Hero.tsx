@@ -91,7 +91,7 @@ export default function Hero() {
         {/* ── Portrait ── */}
         <div className="mb-10 aspect-square w-full max-w-[240px] shrink-0 overflow-hidden rounded-full border border-line mid:mb-0 mid:max-w-[320px]">
           <img
-            src={`${import.meta.env.BASE_URL}profile-pic2.jpg`}
+            src={`${import.meta.env.BASE_URL}profile-pic3.png`}
             width={900}
             height={1200}
             alt="Nick Xylan Melloria"
