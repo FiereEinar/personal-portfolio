@@ -75,7 +75,7 @@ function Chip({ icon, children }: { icon: ReactNode; children: ReactNode }) {
       <span aria-hidden="true" className="flex items-center text-accent">
         {icon}
       </span>
-      <span className="font-semibold tracking-[-0.01em]">{children}</span>
+      <span className="font-medium tracking-[-0.01em]">{children}</span>
     </span>
   );
 }
@@ -108,13 +108,13 @@ export default function Hero() {
 
           <div className="mt-7 max-w-[56ch] space-y-4 text-[1.05rem] leading-[1.95] text-muted">
             <p>
-              I'm a <Chip icon={<CodeIcon />}>full-stack</Chip> developer. I build{" "}
-              <Chip icon={<ZapIcon />}>real-time systems</Chip>,{" "}
+              I'm a <Chip icon={<CodeIcon />}>full-stack</Chip> developer. I
+              build <Chip icon={<ZapIcon />}>real-time systems</Chip>,{' '}
               <Chip icon={<LayersIcon />}>multi-tenant platforms</Chip>, and the
               APIs behind them.
             </p>
             <p>
-              These days I'm <Chip icon={<BriefcaseIcon />}>open to roles</Chip>{" "}
+              These days I'm <Chip icon={<BriefcaseIcon />}>open to roles</Chip>{' '}
               in software engineering.
             </p>
           </div>
