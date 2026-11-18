@@ -72,7 +72,7 @@ function BriefcaseIcon() {
 function Chip({ icon, children }: { icon: ReactNode; children: ReactNode }) {
   return (
     <span className="inline-flex items-center gap-1.5 rounded-full border border-line bg-surface px-2.5 py-[0.22rem] align-middle font-mono text-[0.8rem] leading-none whitespace-nowrap text-ink">
-      <span aria-hidden="true" className="flex items-center text-accent">
+      <span aria-hidden="true" className="flex items-center">
         {icon}
       </span>
       <span className="font-medium tracking-[-0.01em]">{children}</span>
@@ -91,7 +91,7 @@ export default function Hero() {
         {/* ── Portrait ── */}
         <div className="mb-10 aspect-square w-full max-w-[240px] shrink-0 overflow-hidden rounded-full border border-line mid:mb-0 mid:max-w-[320px]">
           <img
-            src={`${import.meta.env.BASE_URL}profile-pic.png`}
+            src={`${import.meta.env.BASE_URL}profile-pic2.jpg`}
             width={900}
             height={1200}
             alt="Nick Xylan Melloria"
