@@ -85,63 +85,65 @@ export default function Hero() {
     <section
       id="hero"
       data-testid="hero"
-      className="scroll-mt-20 px-6 pt-20 pb-16 mid:grid mid:grid-cols-[auto_1fr] mid:items-center mid:gap-14 mid:pt-38 mid:pb-24 mid:pr-16"
+      className="scroll-mt-20 px-6 pt-20 pb-16 mid:px-10 mid:pt-32 mid:pb-24"
     >
-      {/* ── Portrait ── */}
-      <div className="mb-10 aspect-square w-full max-w-[240px] shrink-0 overflow-hidden rounded-full border border-line mid:mb-0 mid:max-w-[320px]">
-        <img
-          src={`${import.meta.env.BASE_URL}profile-pic.png`}
-          width={900}
-          height={1200}
-          alt="Nick Xylan Melloria"
-          fetchPriority="high"
-          className="h-full w-full object-cover object-[50%_20%]"
-        />
-      </div>
-
-      {/* ── Content ── */}
-      <div>
-        <h1 className="max-w-[14ch] text-[clamp(2.75rem,5.5vw,4.5rem)] leading-[1.02] tracking-[-0.03em] text-ink">
-          {profile.name}
-        </h1>
-
-        <div className="mt-7 max-w-[56ch] space-y-4 text-[1.05rem] leading-[1.95] text-muted">
-          <p>
-            I'm a <Chip icon={<CodeIcon />}>full-stack</Chip> developer. I build{' '}
-            <Chip icon={<ZapIcon />}>real-time systems</Chip>,{' '}
-            <Chip icon={<LayersIcon />}>multi-tenant platforms</Chip>, and the
-            APIs behind them.
-          </p>
-          <p>
-            These days I'm <Chip icon={<BriefcaseIcon />}>open to roles</Chip>{' '}
-            in software engineering.
-          </p>
+      <div className="mx-auto max-w-6xl mid:grid mid:grid-cols-[auto_1fr] mid:items-center mid:gap-14">
+        {/* ── Portrait ── */}
+        <div className="mb-10 aspect-square w-full max-w-[240px] shrink-0 overflow-hidden rounded-full border border-line mid:mb-0 mid:max-w-[320px]">
+          <img
+            src={`${import.meta.env.BASE_URL}profile-pic.png`}
+            width={900}
+            height={1200}
+            alt="Nick Xylan Melloria"
+            fetchPriority="high"
+            className="h-full w-full object-cover object-[50%_20%]"
+          />
         </div>
 
-        <p className="mt-4 font-mono text-[0.8125rem] tracking-[0.06em] text-muted">
-          {profile.degree}
-        </p>
+        {/* ── Content ── */}
+        <div>
+          <h1 className="max-w-[14ch] text-[clamp(2.75rem,5.5vw,4.5rem)] leading-[1.02] tracking-[-0.03em] text-ink">
+            {profile.name}
+          </h1>
 
-        {/* ── Restored Social links ── */}
-        <div className="mt-8 flex items-center gap-6 text-base">
-          <a
-            href={profile.github}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-accent underline decoration-accent/40 underline-offset-4 transition-colors duration-[120ms] hover:decoration-accent"
-          >
-            GitHub
-            <span aria-hidden="true" className="ml-1 font-mono text-xs">
-              ↗
-            </span>
-            <span className="sr-only"> (opens in a new tab)</span>
-          </a>
-          <a
-            href={`mailto:${profile.email}`}
-            className="text-accent underline decoration-accent/40 underline-offset-4 transition-colors duration-[120ms] hover:decoration-accent"
-          >
-            Email
-          </a>
+          <div className="mt-7 max-w-[56ch] space-y-4 text-[1.05rem] leading-[1.95] text-muted">
+            <p>
+              I'm a <Chip icon={<CodeIcon />}>full-stack</Chip> developer. I build{" "}
+              <Chip icon={<ZapIcon />}>real-time systems</Chip>,{" "}
+              <Chip icon={<LayersIcon />}>multi-tenant platforms</Chip>, and the
+              APIs behind them.
+            </p>
+            <p>
+              These days I'm <Chip icon={<BriefcaseIcon />}>open to roles</Chip>{" "}
+              in software engineering.
+            </p>
+          </div>
+
+          <p className="mt-4 font-mono text-[0.8125rem] tracking-[0.06em] text-muted">
+            {profile.degree}
+          </p>
+
+          {/* ── Restored Social links ── */}
+          <div className="mt-8 flex items-center gap-6 text-base">
+            <a
+              href={profile.github}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-accent underline decoration-accent/40 underline-offset-4 transition-colors duration-[120ms] hover:decoration-accent"
+            >
+              GitHub
+              <span aria-hidden="true" className="ml-1 font-mono text-xs">
+                ↗
+              </span>
+              <span className="sr-only"> (opens in a new tab)</span>
+            </a>
+            <a
+              href={`mailto:${profile.email}`}
+              className="text-accent underline decoration-accent/40 underline-offset-4 transition-colors duration-[120ms] hover:decoration-accent"
+            >
+              Email
+            </a>
+          </div>
         </div>
       </div>
     </section>
