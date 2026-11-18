@@ -1,88 +1,85 @@
-# Nick Xylan Melloria — Portfolio
+# Nick Xylan Melloria — Personal Portfolio Website
 
-A multi-page, recruiter-facing portfolio: a home page with Hero, selected work,
-experience, stack, education, and contact, plus a projects index at
-`projects.html`. Built with Vite, React, TypeScript, and Tailwind CSS.
+A clean, responsive, single-page portfolio website showcasing web development, full-stack systems engineering, and interactive architectural diagrams. Built with React, TypeScript, Vite, and Tailwind CSS.
 
-## Requirements
+---
 
-Node.js `^20.19.0` or `>=22.12.0` (Vite 8) and npm.
+## Live Website
 
-## Run locally
+- **Live Deployed URL:** [https://personal-portfolio-delta-sage.vercel.app](https://personal-portfolio-delta-sage.vercel.app) _(or your deployed Vercel / GitHub Pages link)_
 
-```powershell
-npm install
-Copy-Item .env.example .env
-npm run dev
-```
+---
 
-The dev server runs at <http://localhost:5173>.
+## Technologies Used
 
-`.env` is gitignored. It only needs the two variables described below.
+### Frontend & Core
 
-## Pages
+- **React 19 (`react`, `react-dom`)** — Modern component-driven UI architecture.
+- **TypeScript 5+** — Strict type safety across profiles, project data, and component interfaces.
+- **Vite 8** — Next-generation frontend tooling and ultra-fast static bundling.
+- **React Router 7 (`react-router-dom`)** — Client-side SPA routing with smooth transitions and history navigation.
+- **Tailwind CSS v4 (`@tailwindcss/vite`)** — High-performance utility CSS with native CSS custom properties for dynamic theming.
 
-- `/` is the home page with the two case studies, experience, stack, education,
-  and contact.
-- `/projects.html` is the full projects index: SIMS, LapSync, SAMS, Reboot Rebellion,
-  StatMastery, Pulse, and Inventory CLI.
+### Design, Icons & Typography
 
-## Commands
+- **Simple Icons (`simple-icons`)** — Official developer and technology brand SVGs.
+- **Fontsource (`@fontsource-variable/instrument-sans`, `@fontsource/ibm-plex-mono`)** — Self-hosted variable typography (Instrument Sans + IBM Plex Mono) for zero layout shifts and fast local font delivery.
 
-| Command | Purpose |
-| --- | --- |
-| `npm run dev` | Start the Vite dev server |
-| `npm run build` | Type-check, then build static files to `dist/` |
-| `npm run preview` | Serve the production build locally |
-| `npm run test:e2e` | Run the Playwright suite (starts its own dev server) |
-| `npm run check:base` | Build with `/repo/` and verify base-path references |
-| `npm run optimize:portrait` | Regenerate `public/profile.jpg` (900×1200) from `profile-crop.jpg` |
+---
 
-## Configuration
+## Pages & Routes
 
-| Variable | Example in `.env.example` | Purpose |
-| --- | --- | --- |
-| `VITE_SITE_URL` | `http://localhost:5173` | Deployed origin used for the canonical link, `og:url`, and the absolute `og:image` / `twitter:image` URLs. **Required for correct share cards.** Use the real origin with no trailing slash. |
-| `VITE_BASE_PATH` | `/` | Public base path. `/` for a root deploy; `/repo/` for a GitHub Pages project site. |
+| Route       | Description                                                                                                                                                 |
+| ----------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `/`         | **Home Page:** Hero introduction, interactive case studies (SIMS & LapSync), experience timeline, technical stack categories, education, and quick contact. |
+| `/projects` | **Projects Index:** Comprehensive showcase of 7 applications across enterprise SaaS, real-time telemetry, games, and developer CLI tools.                   |
+| `/contact`  | **Dedicated Contact Page:** Complete message form, live availability status, and direct communication channels.                                             |
 
-The values above are examples copied from `.env.example`, not built-in defaults. Vite
-always replaces `%BASE_URL%` (it resolves to `/` unless `VITE_BASE_PATH` is set) and
-replaces `%VITE_SITE_URL%` only when it is set; an unset `VITE_SITE_URL` leaves the
-literal token in the built HTML.
-Set both in the host's environment (or in `.env` before building). `VITE_SITE_URL`
-has no production value committed because the domain is not known yet; set it to the
-real origin, for example `https://example.com`. The localhost example is for local
-development only and points share cards at localhost.
+---
 
-## Deploy
+## Getting Started
 
-All three hosts serve the static `dist/` output, including `index.html` and
-`projects.html`. Run `npm run build` first (or let the host run it) and set
-`VITE_SITE_URL` to the real origin in the project settings.
+### Prerequisites
 
-- **Netlify** — build command `npm run build`, publish directory `dist`.
-- **Vercel** — import the repo and use the Vite preset; build command `npm run build`,
-  output directory `dist`.
-- **GitHub Pages** — build with the repository subpath and publish `dist`:
+- **Node.js** `^20.19.0` or `>=22.12.0`
+- **npm** `^10.0.0`
 
-  ```powershell
-  $env:VITE_BASE_PATH="/repo/"; npm run build
-  ```
+### Setup Instructions
 
-  Replace `repo` with the repository name, or set `VITE_BASE_PATH=/repo/` in the
-  Pages workflow environment. `VITE_SITE_URL` stays the bare origin.
+1. **Clone the repository:**
 
-## Assets and privacy
+   ```bash
+   git clone https://github.com/FiereEinar/personal-portfolio.git
+   cd personal-portfolio
+   ```
 
-- `profile.jpg` and `profile-crop.jpg` at the repository root are originals and stay
-  untracked. Only the generated `public/profile.jpg` is committed.
-- `public/projects/` holds the real project screenshots used on the projects page:
-  SIMS, LapSync, SAMS, Reboot Rebellion, StatMastery, and Pulse. Inventory CLI uses
-  a typographic cover because no screenshot is applicable for the terminal app.
-- `npm run optimize:portrait` reads `profile-crop.jpg` and writes the 900×1200
-  `public/profile.jpg` used by the hero and the share card.
-- `Melloria Resume.pdf` is untracked and no résumé link is published. Before any
-  résumé link returns, add a copy you want public to `public/`.
-- The phone number is published in Contact at your request. It is visible in the
-  page source and can be scraped.
-- `.env`, `.env.local`, `.superpowers/`, and test/build output are gitignored.
+2. **Install dependencies:**
+
+   ```bash
+   npm install
+   ```
+
+3. **Configure environment variables:**
+
+   ```powershell
+   Copy-Item .env.example .env
+   # Or on Unix: cp .env.example .env
+   ```
+
+4. **Start the local development server:**
+   ```bash
+   npm run dev
+   ```
+   Open your browser and navigate to `http://localhost:5173`.
+
+---
+
+## Available Scripts
+
+| Command              | Purpose                                                                                   |
+| -------------------- | ----------------------------------------------------------------------------------------- |
+| `npm run dev`        | Starts the Vite local development server.                                                 |
+| `npm run build`      | Runs TypeScript type checking (`tsc --noEmit`) and compiles production assets to `dist/`. |
+| `npm run preview`    | Serves the production build locally for verification.                                     |
+| `npm run test:e2e`   | Executes Playwright end-to-end tests against local builds.                                |
+| `npm run check:base` | Verifies repository base path routing and asset links.                                    |
